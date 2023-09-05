@@ -3,6 +3,14 @@ const path = require('path');
 const fs = require('fs');
 
 exports.sellTrade = async(req,res)=>{
+  let images = [];
+
+  if (req.files && req.files.length > 0) {
+    for (var i = 0; i < req.files.length; i++) {
+      console.log(req.files[i]);
+      images.push(eq.files[i].path)
+    }
+  }
     const data={
         username:req.body.username,
         pickuplocation:req.body.pickuplocation,
@@ -13,7 +21,7 @@ exports.sellTrade = async(req,res)=>{
         price:req.body.price,
         Date:req.body.Date,
         quantity:req.body.quantity,
-        image:req.file.path
+        images:images
     }
     // console.log("data",data)
     await SellModel.create(data,(err,result)=>{

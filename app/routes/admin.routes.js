@@ -3,7 +3,9 @@ const adminrequestschemas = require('../requestschema/adminrequestschema.js');
 const validaterequestmiddleware = require('../middleware/validaterequest.middleware.js');
 const TokenObj = require('../middleware/middleware')
 const multer = require("multer")
-const path = require('path')
+const path = require('path');
+
+
 
 var Storage = multer.diskStorage({
   destination: function (req, file, callback) {
@@ -55,7 +57,7 @@ var AdharStorage = multer.diskStorage({
   },
 });
 var adharUpload = multer({
-  storage: AdharStorage,
+  storage:  AdharStorage,
 })
 
 var panStorage = multer.diskStorage({
@@ -90,6 +92,7 @@ module.exports = (app) => {
   const crops = require('../controllers/crops.controller.js')
   const Raisequery = require('../controllers/Raisequery.controller.js')
   const chat = require('../controllers/chat.controller.js')
+  const FarmingRequest = require('../controllers/farmingRequest.controller.js');
   
   // farmer
   app.post('/api/admin/register',profileUpload.single('profilePicture'),adminLogin.registerAdmin);
@@ -142,8 +145,8 @@ module.exports = (app) => {
   app.put('/api/buyer/updatebuyerbyid/:id',TokenObj.verifyUserType("buyer"), buyer.updatebuyerbyid);
   app.delete('/api/buyer/logoutbuyer/:id', TokenObj.verifyUserType("buyer"), buyer.logoutbuyer);
   // sellTrade 
-  app.post('/api/selltrade/selltrade',upload.single('image'), selltrade.sellTrade);
-  app.get('/api/selltrade/getselltrade',  TokenObj.verifyUserType("farmer"), selltrade.GetSellTrade);
+  app.post('/api/selltrade/selltrade',upload.array('image', 3), selltrade.sellTrade);
+  app.get('/api/selltrade/getselltrade',  [TokenObj.verifyToken], selltrade.GetSellTrade);
   app.get('/api/selltrade/imageSellTrade/:id', TokenObj.verifyUserType("farmer"), selltrade.GetbyimageSellTrade);
   app.get('/api/selltrade/Variety',TokenObj.verifyUserType("farmer"), selltrade.getVariety);
   app.get('/api/selltrade/getselltradebyid/:id', TokenObj.verifyUserType("farmer"), selltrade.GetBySellTrade);
@@ -215,4 +218,13 @@ module.exports = (app) => {
   // app.post('/api/farmingtype/addorganicfarming', TokenObj.verifyUserType("farmer"),farmingType.addorganicfarming);
   // app.get('/api/farmingtype/getorganicfarming',TokenObj.verifyUserType("farmer"),farmingType.getorganicfarming)
 
+  //contract farming
+  app.post("/api/contract/contractFarmRequest", [TokenObj.verifyBuyer("buyer")],FarmingRequest.farmingRequest);
+  app.get("/api/contract/contractFarmers",[TokenObj.verifyBuyer('buyer') ],FarmingRequest.contractFarmerList);
+  app.get("/api/contract/allFarmingRequests",[TokenObj.verifyToken], FarmingRequest.getAllFarmingRequest);
+  app.get("/api/contract/myFarmingRequests",[TokenObj.verifyBuyer('buyer') ], FarmingRequest.getMyFarmingRequest);
+  app.get("/api/contract/farmingRequest",[TokenObj.verifyToken], FarmingRequest.getFarmingRequestDetails );
+  app.patch("/api/contract/acceptFarmingRequest", [TokenObj.verifyFarmer('farmer') ],FarmingRequest.updateAcceptedFarmers);
+  app.patch("/api/contract/updateDelivered",[TokenObj.verifyBuyer('buyer')],FarmingRequest.updateFarmersDelivered);
+  app.delete("/api/contract/deleteFarmingRequest",[TokenObj.verifyBuyer('buyer')], FarmingRequest.deleteFarmingRequest);
 }

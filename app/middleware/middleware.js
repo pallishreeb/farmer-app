@@ -1,6 +1,7 @@
 const TokenObj = require("../middleware/token");
 const jwt = require("jsonwebtoken");
 const Admin = require("../models/admin.model");
+const User = require("../models/user.model")
 
 
 const BuyerToken = async (req, res, next) => {
@@ -107,10 +108,103 @@ function verifyType(userType) {
   };
 }
 
+
+const verifyBuyer = (userType) =>{
+  return async function (req, res, next) {
+    const token = req.headers["x-access-token"];
+    if (!token) {
+      return res.status(401).json({ error: "Token not provided" });
+    }
+
+    try {
+      const decoded = jwt.verify(token, config.SECRET);
+      // console.log(decoded.id, "decoded");
+      const user = await User.findOne({
+        _id: decoded.id,
+      });
+      if (!user) {
+        return res.status(401).json({ error: "Invalid token" });
+      }
+
+      // console.log(user, "User");
+      if (user.userType !== "buyer") {
+        return res.status(403).json({ error: "Access denied" });
+      }
+      req.user = decoded;
+      // console.log(req.user, "req.user");
+      next();
+    } catch (err) {
+      return res.status(401).json({ error: "Invalid token", data: err });
+    }
+  };
+}
+
+const verifyFarmer = (userType) =>{
+  return async function (req, res, next) {
+    const token = req.headers["x-access-token"];
+    if (!token) {
+      return res.status(401).json({ error: "Token not provided" });
+    }
+
+    try {
+      const decoded = jwt.verify(token, config.SECRET);
+      // console.log(decoded.id, "decoded");
+      const user = await User.findOne({
+        _id: decoded.id,
+      });
+      if (!user) {
+        return res.status(401).json({ error: "Invalid token" });
+      }
+
+      // console.log(user, "User");
+      if (user.userType !== "farmer") {
+        return res.status(403).json({ error: "Access denied" });
+      }
+      req.user = decoded;
+      // console.log(req.user, "req.user");
+      next();
+    } catch (err) {
+      return res.status(401).json({ error: "Invalid token", data: err });
+    }
+  };
+}
+
+const verifyFarmerOrBuyer = (userType) =>{
+  return async function (req, res, next) {
+    const token = req.headers["x-access-token"];
+    if (!token) {
+      return res.status(401).json({ error: "Token not provided" });
+    }
+
+    try {
+      const decoded = jwt.verify(token, config.SECRET);
+      // console.log(decoded.id, "decoded");
+      const user = await User.findOne({
+        _id: decoded.id,
+      });
+      if (!user) {
+        return res.status(401).json({ error: "Invalid token" });
+      }
+
+      // console.log(user, "User");
+      if (user.userType !== "farmer" || user.userType !== "buyer") {
+        return res.status(403).json({ error: "Access denied" });
+      }
+      req.user = decoded;
+      // console.log(req.user, "req.user");
+      next();
+    } catch (err) {
+      return res.status(401).json({ error: "Invalid token", data: err });
+    }
+  };
+}
 module.exports = {
   BuyerToken,
   FarmerToken,
   verifyUserType,
   verifyToken,
   verifyType,
+  verifyBuyer,
+  verifyFarmer,
+  verifyFarmerOrBuyer
 };
