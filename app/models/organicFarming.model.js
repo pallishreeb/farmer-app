@@ -5,7 +5,7 @@ const organicFarmingSchema = mongoose.Schema({
     landType:{type:String,require:true,enum:["Irrigated Land", "Non-Irrigated Land"]},
     organicFarmType:{type:String,require:true,enum:["Integrated Organic Farming", "Crop Rotation", "Soil Management", "Compost Farming"]},
     organicFarmingMethod:{type:String,require:true,enum:["Weed Management", "Compost Management", "Bio Pest Control", "Green Manure"]},
-    farmer_id:{type:mongoose.Schema.Types.ObjectId, ref:"Users"}
+    farmer_id:{type:mongoose.Schema.Types.ObjectId, ref:"admin"}
 }, {
     timestamps: true
 });

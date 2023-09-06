@@ -8,7 +8,7 @@ exports.sellTrade = async(req,res)=>{
   if (req.files && req.files.length > 0) {
     for (var i = 0; i < req.files.length; i++) {
       console.log(req.files[i]);
-      images.push(eq.files[i].path)
+      images.push(req.files[i].path)
     }
   }
     const data={
@@ -21,7 +21,7 @@ exports.sellTrade = async(req,res)=>{
         price:req.body.price,
         Date:req.body.Date,
         quantity:req.body.quantity,
-        images:images
+        image:images
     }
     // console.log("data",data)
     await SellModel.create(data,(err,result)=>{
@@ -55,8 +55,16 @@ exports.GetbyimageSellTrade = async (req, res) => {
     if (!product || !product.image || product.image.length === 0) {
       return res.status(404).json({ message: 'Image not found' });
     }
-    const imagePath = product.image[0];
-    const image = fs.readFileSync(imagePath);
+    let image = [];
+    let imagePath;
+    if (product.image && product.image.length > 0) {
+      for (var i = 0; i < product.image.length; i++) {
+        imagePath = product.image[i];
+        image.push(fs.readFileSync(imagePath))
+      }
+    }
+    // const imagePath = product.image[0];
+    // const image = fs.readFileSync(imagePath);
     res.setHeader('Content-Type', 'image/png'); 
     res.send(image);
   } catch (err) {

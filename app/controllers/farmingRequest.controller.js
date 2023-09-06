@@ -1,6 +1,7 @@
 const FarmingRequest= require("../models/farmingRequest.model");
-const User = require("../models/user.model");
+const Admin = require("../models/admin.model");
 const ContractFarming = require("../models/contractFarming.model");
+const Crops = require("../models/crop.model")
 const mongoose = require("mongoose")
 
 //Send ccontract farming request to farmers
@@ -18,7 +19,7 @@ exports.farmingRequest = async (req, res) => {
 
     let buyerId = req.user.id;
     // console.log(buyerId,"buyerId");
-    let user = await User.findById({ _id: mongoose.Types.ObjectId(buyerId) });
+    let user = await Admin.findById({ _id: mongoose.Types.ObjectId(buyerId) });
 
     if (!user)
       return res
@@ -73,16 +74,19 @@ exports.contractFarmerList = async (req, res) => {
     const commodityName = req.query.commodityName;
 
     // Find all farmers with the given commodity name and contract-farming
-   
     const contractFarmers = await ContractFarming.find({});
-
     // Extract distinct farmer IDs
     const farmerIds = [...new Set(contractFarmers.map(item => item.farmer_id.toString()))];
 
-    const farmers = await User.find({ 
-      _id: { $in: farmerIds },
-      userType: 'farmer', 
-      crops: { $elemMatch: { name: commodityName } },
+    const cropsDetails = await Crops.find({
+      farmer_id: { $in: farmerIds },
+      names:{ $elemMatch: { name: commodityName } }
+    });
+
+    const farmerIdsForCrops = [...new Set(cropsDetails.map(item => item.farmer_id.toString()))];
+
+    const farmers = await Admin.find({ 
+      _id: { $in: farmerIdsForCrops }
     });
 
     if(farmers.length == 0){
@@ -93,6 +97,7 @@ exports.contractFarmerList = async (req, res) => {
       farmers
     })
   } catch (error) {
+    console.log("error in getting contract farming list", error)
     res.status(500).json({ error: 'Internal server error' });
   };
 };
@@ -101,7 +106,7 @@ exports.contractFarmerList = async (req, res) => {
 exports.getAllFarmingRequest = async (req,res) =>{
   try {
     // Find all contractFarmings  request
-    const contractFarmingRequests = await FarmingRequest.find({}).populate('buyerId','fullname userdetail');
+    const contractFarmingRequests = await FarmingRequest.find({}).populate('buyerId','_id fullName city address phone');
     if(contractFarmingRequests .length == 0){
       return res.send({Message: 'No Contract farming found'})
     }

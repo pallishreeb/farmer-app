@@ -131,8 +131,9 @@ exports.addCropSubcategory = async (req, res) => {
 
 exports.addCrop = async (req, res) => {
   const { categoryname, names, price } = req.body;
+  const farmer_id = req.user.id;
   try {
-    const newData = new Crop({ categoryname, names, price });
+    const newData = new Crop({ categoryname, names, price, farmer_id });
     await newData.save();
     res.json({ message: "crop saved successfully", data: newData });
   } catch (error) {

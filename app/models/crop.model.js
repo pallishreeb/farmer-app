@@ -24,7 +24,8 @@ const Cropschema = mongoose.Schema({
     price:{
         type: Number,
         required: true,
-    }
+    },
+    farmer_id:{type:mongoose.Schema.Types.ObjectId,ref:"admin"}
 }, {
     timestamps: true
 });

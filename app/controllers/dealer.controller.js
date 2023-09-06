@@ -1,16 +1,16 @@
-const User = require('../models/user.model.js');
+const User = require('../models/user.model');
 const UserSetting = require('../models/usersetting.model.js');
-
+const Admin = require('../models/admin.model');
 var md5 = require('md5');
 
 exports.createdealer = async(req, res) => {
-    let findphone = await User.findOne({ phone: req.body.phone});
+    let findphone = await Admin.findOne({ phone: req.body.phone});
     if(findphone && findphone._id){
         return res.status(400).send({
             message: "Dealer already exit with this phone number"
         });
     }
-    let findemail = await User.findOne({ email: req.body.email});
+    let findemail = await Admin.findOne({ email: req.body.email});
     if(findemail && findemail._id){
         return res.status(400).send({
             message: "Dealer already exit with this email"
@@ -43,7 +43,7 @@ exports.getdealers = (req, res) => {
     let page = req.query && req.query.page && Number(req.query.page) || 1;
     let limit = 5;
     let skip = limit * (page - 1);
-    User.find({userType:{$eq:"dealer"}},{crops:0,farmerdetail:0,bankingdetail:0,password:0,__v:0,updatedAt:0})
+    Admin.find({userType:{$eq:"dealer"}},{crops:0,farmerdetail:0,bankingdetail:0,password:0,__v:0,updatedAt:0})
      .sort({createdAt:-1})
      .limit(limit)
      .skip(skip)
@@ -57,13 +57,13 @@ exports.getdealers = (req, res) => {
 
 exports.getdealerprofile = async(req,res)=>{
     id=req.params.id;
-    const result= await User.findById(id);
+    const result= await Admin.findById(id);
     if(!result) return res.status(500).send({Message:"Can't Find Dealer Data With Given Id"})
     res.status(200).send({Message:"Dealer Data Find Successfully Done",result});
 }
 
 exports.updatedealerbyid = async(req,res)=>{
-    const result=await User.findByIdAndUpdate(req.params.id,{
+    const result=await Admin.findByIdAndUpdate(req.params.id,{
         name:req.body.name,
         phone:req.body.phone, 
         email:req.body.email, 
@@ -82,7 +82,7 @@ exports.updatedealerbyid = async(req,res)=>{
 }
 
 exports.logoutdealer=async(req,res)=>{
-    const result=await User.findByIdAndDelete(req.params.id);
+    const result=await Admin.findByIdAndDelete(req.params.id);
     if(!result) return res.status(500).send({Message:"Can't Logout Dealer please Check Your Data"})
     res.status(200).send({Message:"Dealer Logout Successfully Done..."})
 }

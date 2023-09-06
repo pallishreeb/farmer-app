@@ -11,24 +11,24 @@ const farmingRequestSchema = new mongoose.Schema(
     deliveryTime: { type: String, require: true },
     buyerId: { 
       type:mongoose.Schema.Types.ObjectId,
-      ref: 'Users'
+      ref: 'admin'
     },
     farmersToRequest: [
       { 
         type:mongoose.Schema.Types.ObjectId,
-        ref: 'Users'
+        ref: 'admin'
       }
     ],
     farmersAccepted: [
       { 
         type:mongoose.Schema.Types.ObjectId,
-        ref: 'Users'
+        ref: 'admin'
       }
     ],
     farmersDelivered: [
       { 
         type:mongoose.Schema.Types.ObjectId,
-        ref: 'Users'
+        ref: 'admin'
       }
     ]
   },

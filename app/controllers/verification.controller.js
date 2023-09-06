@@ -1,11 +1,11 @@
 const AdharVerification = require("../models/adharVerification.model");
 const PanVerification = require("../models/panVerification.model");
-const User = require("../models/user.model");
+const Admin = require("../models/admin.model");
 
 exports.addadharcard = (async(req,res)=>{
     try{
         const farmer_id = req.body.farmer_id
-        await User.findOne({ _id: farmer_id }, async(err, result) => {
+        await Admin.findOne({ _id: farmer_id }, async(err, result) => {
             // console.log(result, "result")
             if (err) throw err;
             else {
@@ -38,7 +38,7 @@ exports.addadharcard = (async(req,res)=>{
 exports.addpancard = (async(req,res)=>{
     try{
         const farmer_id = req.body.farmer_id
-        await User.findOne({ _id: farmer_id }, async(err, result) => {
+        await Admin.findOne({ _id: farmer_id }, async(err, result) => {
             // console.log(result, "result")
             if (err) throw err;
             else {

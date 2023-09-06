@@ -1,7 +1,7 @@
 const TokenObj = require("../middleware/token");
 const jwt = require("jsonwebtoken");
 const Admin = require("../models/admin.model");
-const User = require("../models/user.model")
+
 
 
 const BuyerToken = async (req, res, next) => {
@@ -119,7 +119,7 @@ const verifyBuyer = (userType) =>{
     try {
       const decoded = jwt.verify(token, config.SECRET);
       // console.log(decoded.id, "decoded");
-      const user = await User.findOne({
+      const user = await Admin.findOne({
         _id: decoded.id,
       });
       if (!user) {
@@ -127,7 +127,7 @@ const verifyBuyer = (userType) =>{
       }
 
       // console.log(user, "User");
-      if (user.userType !== "buyer") {
+      if (user.userType !== "buyer" && userType !=="buyer") {
         return res.status(403).json({ error: "Access denied" });
       }
       req.user = decoded;
@@ -149,7 +149,7 @@ const verifyFarmer = (userType) =>{
     try {
       const decoded = jwt.verify(token, config.SECRET);
       // console.log(decoded.id, "decoded");
-      const user = await User.findOne({
+      const user = await Admin.findOne({
         _id: decoded.id,
       });
       if (!user) {
@@ -157,7 +157,7 @@ const verifyFarmer = (userType) =>{
       }
 
       // console.log(user, "User");
-      if (user.userType !== "farmer") {
+      if (user.userType !== "farmer" && userType !== "farmer") {
         return res.status(403).json({ error: "Access denied" });
       }
       req.user = decoded;
@@ -179,7 +179,7 @@ const verifyFarmerOrBuyer = (userType) =>{
     try {
       const decoded = jwt.verify(token, config.SECRET);
       // console.log(decoded.id, "decoded");
-      const user = await User.findOne({
+      const user = await Admin.findOne({
         _id: decoded.id,
       });
       if (!user) {
@@ -187,7 +187,7 @@ const verifyFarmerOrBuyer = (userType) =>{
       }
 
       // console.log(user, "User");
-      if (user.userType !== "farmer" || user.userType !== "buyer") {
+      if ((user.userType !== "farmer" &&  userType !== "farmer") || (user.userType !== "buyer" && userType !== "buyer")) {
         return res.status(403).json({ error: "Access denied" });
       }
       req.user = decoded;

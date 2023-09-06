@@ -1,12 +1,12 @@
 const RegulerFarming = require("../models/regulerFarming.model");
 const ContractFarming = require("../models/contractFarming.model");
 const OrganicFarming = require("../models/organicFarming.model");
-const User = require("../models/farmer.model");
+const Admin = require("../models/admin.model");
 
 exports.addregulerfarming = async(req,res)=>{
     try {
         const farmer_id = req.body.farmer_id
-        await User.findOne({ _id: farmer_id }, (err, result) => {
+        await Admin.findOne({ _id: farmer_id }, (err, result) => {
             // console.log(result, "result")
             if (err) throw err;
             else {
@@ -46,7 +46,7 @@ exports.getregulerfarming=async(req,res)=>{
 exports.addcontractfarming = async(req,res)=>{
     try {
         const farmer_id = req.body.farmer_id
-        await User.findOne({ _id: farmer_id }, (err, result) => {
+        await Admin.findOne({ _id: farmer_id }, (err, result) => {
             console.log(result, "result")
             if (err) throw err;
             else {
@@ -85,7 +85,7 @@ exports.getcontractfarming=async(req,res)=>{
 exports.addorganicfarming = async(req,res)=>{
     try {
         const farmer_id = req.body.farmer_id
-        await User.findOne({ _id: farmer_id }, (err, result) => {
+        await Admin.findOne({ _id: farmer_id }, (err, result) => {
             console.log(result, "result")
             if (err) throw err;
             else {

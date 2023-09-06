@@ -10,7 +10,7 @@ const sellTradeSchema=new mongoose.Schema({
     price:{type:Number,default:0},
     quantity:{type:String,default:0},
     Date:{type:String},
-    images: [],
+    image: [],
 })
 
 const sellTrade=mongoose.model("sellTrade",sellTradeSchema);

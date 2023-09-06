@@ -8,7 +8,7 @@ const adharVerificationSchema = new mongoose.Schema({
             }}},
     frontSidePhoto:{type:Array,require:true},
     backSidePhoto:{type:Array,require:true},
-    farmer_id:{type:mongoose.Schema.Types.ObjectId,ref:"Users"}
+    farmer_id:{type:mongoose.Schema.Types.ObjectId,ref:"admin"}
 })
 
 module.exports = mongoose.model("adharVerification",adharVerificationSchema)

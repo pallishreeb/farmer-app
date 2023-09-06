@@ -1,5 +1,4 @@
 const Addfarm = require("../models/addfarm.model");
-const User = require("../models/farmer.model");
 const Admin = require("../models/admin.model");
 exports.addfarm = async (req, res) => {
   try {

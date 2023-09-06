@@ -5,7 +5,7 @@
 //     profile:{type:Array,require:true},
 //     farmer_id:{
 //         type:mongoose.Schema.Types.ObjectId,
-//         ref: "Users",
+//         ref: "admin",
 //     }
 // }, {
 //     timestamps: true
