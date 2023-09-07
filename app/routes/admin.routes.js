@@ -210,7 +210,8 @@ module.exports = (app) => {
   app.post('/api/crops/addCropSubcategory', [TokenObj.verifyType(["farmer","buyer"])],validaterequestmiddleware(adminrequestschemas.addCropSubcategory),crops.addSubcategory);
   app.get('/api/crops/getCropCategorybyname',[TokenObj.verifyType(["farmer","buyer"])], crops.getCropCategorybyname);
   app.post('/api/crops/addCropPrice',[TokenObj.verifyType(["farmer","buyer"])], validaterequestmiddleware(adminrequestschemas.addCropPrice),crops.addCropPrice);
-  app.get('/api/crops/croplist',[TokenObj.verifyType(["farmer","buyer"])],crops.getCrop);  
+  app.get('/api/crops/croplist',[TokenObj.verifyType(["farmer","buyer"])],crops.getCrop);
+  app.get('/api/crops/getCropsByCategory',[TokenObj.verifyToken], crops.getCropsByCategory);  
 
   // app.get('/api/farmingtype/getregulerfarming',TokenObj.verifyUserType("farmer"),farmingType.getregulerfarming)
   // app.post('/api/farmingtype/addcontractfarming', TokenObj.verifyUserType("farmer"),farmingType.addcontractfarming);

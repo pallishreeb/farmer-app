@@ -194,3 +194,42 @@ exports.addCropPrice = async (req, res) => {
     });
   }
 };
+
+//getCrops by categoryname
+exports.getCropsByCategory = async (req, res) => {
+  
+    try {
+      const categoryName = req.query.categoryName;
+  
+      // Use Mongoose aggregation to find all crops with the specified category
+      const result = await Crop.aggregate([
+        {
+          $match: { category: categoryName },
+        },
+        {
+          $unwind: '$names',
+        },
+        {
+          $group: {
+            _id: '$names',
+          },
+        },
+        {
+          $project: {
+            _id: 0,
+            name: '$_id',
+          },
+        },
+      ]);
+  
+      const uniqueCropNames = [...new Set(result.map(item => item.name))];
+  
+      // console.log("crops",uniqueCropNames)
+      res.json({ crops: uniqueCropNames });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+
+};
+

@@ -7,7 +7,7 @@ const farmingRequestSchema = new mongoose.Schema(
     category: { type: String, require: true },
     commodity: { type: String, require: true },
     quality: { type: String, require: true },
-    quantity: { type: Number, require: true },
+    quantity: { type: String, require: true },
     deliveryTime: { type: String, require: true },
     buyerId: { 
       type:mongoose.Schema.Types.ObjectId,
