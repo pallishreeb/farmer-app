@@ -200,11 +200,9 @@ exports.getCropsByCategory = async (req, res) => {
   
     try {
       const categoryname = req.query.categoryname;
-      // const allCrops = await Crop.find({categoryname})
-      const uniqueCrops = await Crop.distinct('names.name', { categoryname:categoryname });
-  
-      console.log("crops",uniqueCrops)
-      res.json({ crops: uniqueCrops });
+      const allCrops = await Crop.find({categoryname:categoryname})  
+      console.log("crops",allCrops)
+      res.json({ crops: allCrops });
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: 'Internal server error' });
