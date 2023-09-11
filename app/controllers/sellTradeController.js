@@ -1,16 +1,18 @@
 const SellModel = require("../models/sellTrade.model")
 const path = require('path');
 const fs = require('fs');
+const mongoose = require("mongoose")
 
 exports.sellTrade = async(req,res)=>{
   let images = [];
-
+  const farmer_id = req.user.id;
   if (req.files && req.files.length > 0) {
     for (var i = 0; i < req.files.length; i++) {
       console.log(req.files[i]);
       images.push(req.files[i].path)
     }
   }
+
     const data={
         username:req.body.username,
         pickuplocation:req.body.pickuplocation,
@@ -21,7 +23,8 @@ exports.sellTrade = async(req,res)=>{
         price:req.body.price,
         Date:req.body.Date,
         quantity:req.body.quantity,
-        image:images
+        image:images,
+        farmer_id:farmer_id
     }
     // console.log("data",data)
     await SellModel.create(data,(err,result)=>{
@@ -110,3 +113,12 @@ exports.getVariety = async (req, res) => {
     };
     res.send({ MSG: "Get List Of Varieties", Data: allVarieties });
   };
+  
+  
+exports.GetMySellTrade = async (req,res)=>{
+    const farmer_id = req.user.id;
+    let findresult = await SellModel.find({farmer_id: mongoose.Types.ObjectId(farmer_id)});
+    if (!findresult) return res.status(500).send({message:"oops Can't found data."});
+    if(findresult=="")return res.status(500).send({Message:"oops Empty Set"})
+    res.status(200).send({ status: true, result:findresult });
+}

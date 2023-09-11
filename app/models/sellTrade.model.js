@@ -11,6 +11,7 @@ const sellTradeSchema=new mongoose.Schema({
     quantity:{type:String,default:0},
     Date:{type:String},
     image: [],
+    farmer_id:{type:mongoose.Schema.Types.ObjectId,ref:"admin"}
 })
 
 const sellTrade=mongoose.model("sellTrade",sellTradeSchema);
