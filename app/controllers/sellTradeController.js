@@ -54,20 +54,20 @@ exports.GetbyimageSellTrade = async (req, res) => {
   try {
     const productId = req.params.id;
     const product = await SellModel.findById(productId);
-    console.log(product,'pppppppp')
+
     if (!product || !product.image || product.image.length === 0) {
       return res.status(404).json({ message: 'Image not found' });
     }
-    let image = [];
-    let imagePath;
-    if (product.image && product.image.length > 0) {
-      for (var i = 0; i < product.image.length; i++) {
-        imagePath = product.image[i];
-        image.push(fs.readFileSync(imagePath))
-      }
-    }
-    // const imagePath = product.image[0];
-    // const image = fs.readFileSync(imagePath);
+    // let image = [];
+    // let imagePath;
+    // if (product.image && product.image.length > 0) {
+    //   for (var i = 0; i < product.image.length; i++) {
+    //     imagePath = product.image[i];
+    //     image.push(fs.readFileSync(imagePath))
+    //   }
+    // }
+    const imagePath = product.image[0];
+    const image = fs.readFileSync(imagePath);
     res.setHeader('Content-Type', 'image/png'); 
     res.send(image);
   } catch (err) {

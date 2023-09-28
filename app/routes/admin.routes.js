@@ -93,6 +93,7 @@ module.exports = (app) => {
   const Raisequery = require('../controllers/Raisequery.controller.js')
   const chat = require('../controllers/chat.controller.js')
   const FarmingRequest = require('../controllers/farmingRequest.controller.js');
+  const messageController = require('../controllers/query.controller.js');
   
   // farmer
   app.post('/api/admin/register',profileUpload.single('profilePicture'),adminLogin.registerAdmin);
@@ -229,4 +230,17 @@ module.exports = (app) => {
   app.patch("/api/contract/acceptFarmingRequest", [TokenObj.verifyFarmer('farmer') ],FarmingRequest.updateAcceptedFarmers);
   app.patch("/api/contract/updateDelivered",[TokenObj.verifyBuyer('buyer')],FarmingRequest.updateFarmersDelivered);
   app.delete("/api/contract/deleteFarmingRequest",[TokenObj.verifyBuyer('buyer')], FarmingRequest.deleteFarmingRequest);
+
+
+  //query messages routes
+
+// Create a new message
+app.post('/api/message',[TokenObj.verifyToken], messageController.postMessage);
+
+// Get all messages between two users
+app.get('/api/messages',[TokenObj.verifyToken], messageController.getMessagesBetweenUsers);
+
+// Delete a message by ID
+app.delete('/api/message',[TokenObj.verifyToken], messageController.deleteMessage);
+
 }
