@@ -43,3 +43,24 @@ exports.deleteMessage = async (req, res) => {
     res.status(500).json({ error: 'Failed to delete message' });
   }
 };
+
+//get all messages for a buyer or farmer by logged in user Id
+exports.getMessageByUserID = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+
+    // Find all queries where the user is either the sender or receiver
+    const queries = await Message.find({
+      $or: [{ sender: userId }, { receiver: userId }],
+    });
+
+    // Extract unique receiver and sender IDs from the queries
+    const userIds = [...new Set(queries.map((query) => query.sender.toString() !== userId ? query.sender.toString() : query.receiver.toString()))];
+
+    // Respond with the array of user IDs
+    res.status(200).json({ userIds });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+}

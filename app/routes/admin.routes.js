@@ -243,6 +243,9 @@ app.get('/api/messages',[TokenObj.verifyToken], messageController.getMessagesBet
 
 // Delete a message by ID
 app.delete('/api/message',[TokenObj.verifyToken], messageController.deleteMessage);
+// API endpoint to get all user IDs with whom the current user has exchanged messages
+app.get('/api/message/:userId',[TokenObj.verifyToken],messageController.getMessageByUserID)
+
 
 //Orders Api routes
 // Create an Order
