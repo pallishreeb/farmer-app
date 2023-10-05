@@ -5,8 +5,8 @@ const Admin = require("../models/admin.model");
 // Create a new message
 exports.postMessage = async (req, res) => {
   try {
-    const { sender, receiver, text } = req.body;
-    const message = new Message({ sender, receiver, text });
+    const { sender, receiver, text,product } = req.body;
+    const message = new Message({ sender, receiver,product, text });
     await message.save();
     res.status(201).json({ message: 'Message sent successfully', data: message });
   } catch (error) {
@@ -24,7 +24,7 @@ exports.getMessagesBetweenUsers = async (req, res) => {
         { sender: userId1, receiver: userId2 },
         { sender: userId2, receiver: userId1 },
       ],
-    }).sort('timestamp');
+    }).sort('timestamp').populate('product');
     res.status(200).json({ data: messages });
   } catch (error) {
     console.error('Error fetching messages:', error);

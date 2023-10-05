@@ -13,6 +13,11 @@ const querySchema = new mongoose.Schema({
     ref: 'admin', // Reference to the User model for receiver
     required: true,
   },
+  product: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'sellTrade', // Reference to the User model for receiver
+    required: true,
+  },
   text: {
     type: String,
     required: true,
