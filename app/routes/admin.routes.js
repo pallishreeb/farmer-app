@@ -150,7 +150,8 @@ module.exports = (app) => {
   app.post('/api/selltrade/selltrade',upload.array('image', 3),[TokenObj.verifyFarmer('farmer')], selltrade.sellTrade);
   app.get('/api/selltrade/getselltrade',  [TokenObj.verifyToken], selltrade.GetSellTrade);
   app.get('/api/selltrade/getmyselltrade',  [TokenObj.verifyFarmer('farmer')], selltrade.GetMySellTrade);
-  app.get('/api/selltrade/imageSellTrade/:id', TokenObj.verifyUserType("farmer"), selltrade.GetbyimageSellTrade);
+  app.get('/api/selltrade/imageSellTrade/:id', [TokenObj.verifyToken], selltrade.GetbyimageSellTrade);
+  app.get('/api/selltrade/image/:id', [TokenObj.verifyToken], selltrade.GetImageForSellTrade);
   app.get('/api/selltrade/Variety',TokenObj.verifyUserType("farmer"), selltrade.getVariety);
   app.get('/api/selltrade/getselltradebyid/:id', TokenObj.verifyUserType("farmer"), selltrade.GetBySellTrade);
   app.put('/api/selltrade/selltrade/update/:id', TokenObj.verifyUserType("farmer"), upload.single('image'), selltrade.updatesellTrade);

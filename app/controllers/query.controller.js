@@ -1,7 +1,7 @@
 // controllers/messageController.js
 
 const Message = require('../models/query.model');
-
+const Admin = require("../models/admin.model");
 // Create a new message
 exports.postMessage = async (req, res) => {
   try {
@@ -56,9 +56,10 @@ exports.getMessageByUserID = async (req, res) => {
 
     // Extract unique receiver and sender IDs from the queries
     const userIds = [...new Set(queries.map((query) => query.sender.toString() !== userId ? query.sender.toString() : query.receiver.toString()))];
-
+    // Fetch user details for the extracted user IDs
+    const users = await Admin.find({ _id: { $in: userIds } });
     // Respond with the array of user IDs
-    res.status(200).json({ userIds });
+    res.status(200).json({ users });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });

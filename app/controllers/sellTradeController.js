@@ -73,7 +73,27 @@ exports.GetbyimageSellTrade = async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: 'no such file or directory',Error: err});
   }
-  };
+};
+
+exports.GetImageForSellTrade = async (req, res) => {
+  try {
+    const productId = req.params.id;
+    const product = await SellModel.findById(productId);
+
+    if (!product || !product.image || product.image.length === 0) {
+      return res.status(404).json({ message: 'Image not found' });
+    }
+    let image = [];
+    if (product.image && product.image.length > 0) {
+      for (var i = 0; i < product.image.length; i++) {
+        image.push( product.image[i])
+      }
+    }
+    res.send(image);
+  } catch (err) {
+    res.status(500).json({ message: 'no such file or directory',Error: err});
+  }
+};
 
 exports.updatesellTrade = async(req,res)=>{
     console.log(req.files,'filreeee')
