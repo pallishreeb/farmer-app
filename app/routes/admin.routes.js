@@ -94,6 +94,7 @@ module.exports = (app) => {
   const chat = require('../controllers/chat.controller.js')
   const FarmingRequest = require('../controllers/farmingRequest.controller.js');
   const messageController = require('../controllers/query.controller.js');
+  const order = require("../controllers/orders.controller.js")
   
   // farmer
   app.post('/api/admin/register',profileUpload.single('profilePicture'),adminLogin.registerAdmin);
@@ -232,7 +233,7 @@ module.exports = (app) => {
   app.delete("/api/contract/deleteFarmingRequest",[TokenObj.verifyBuyer('buyer')], FarmingRequest.deleteFarmingRequest);
 
 
-  //query messages routes
+  //query messages Api routes
 
 // Create a new message
 app.post('/api/message',[TokenObj.verifyToken], messageController.postMessage);
@@ -243,4 +244,17 @@ app.get('/api/messages',[TokenObj.verifyToken], messageController.getMessagesBet
 // Delete a message by ID
 app.delete('/api/message',[TokenObj.verifyToken], messageController.deleteMessage);
 
+//Orders Api routes
+// Create an Order
+app.post('/api/orders',[TokenObj.verifyBuyer('buyer')],order.createOrder);
+// Get All Orders for a Buyer
+app.get('/api/orders/buyer/:buyerId',[TokenObj.verifyBuyer('buyer')],order.getOrdersForBuyer);
+// Get All Orders for a Farmer
+app.get('/api/orders/farmer/:farmerId',[TokenObj.verifyFarmer('farmer') ],order.getOrdersForfarmer);
+// Get Single Order Details
+app.get('/api/orders/:orderId', [TokenObj.verifyToken], order.getOrderDetails);
+//Edit an order
+app.put('/api/orders/:orderId',[TokenObj.verifyToken], order.editAnOrder);
+// Delete an Order
+app.delete('/api/orders/:orderId',[TokenObj.verifyToken], order.deleteAnOrder);
 }
