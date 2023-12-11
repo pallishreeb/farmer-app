@@ -80,7 +80,7 @@ exports.contractFarmerList = async (req, res) => {
 
     const cropsDetails = await Crops.find({
       farmer_id: { $in: farmerIds },
-      names:{ $elemMatch: { name: commodityName } }
+      // names:{ $elemMatch: { name: commodityName } }
     });
 
     const farmerIdsForCrops = [...new Set(cropsDetails.map(item => item.farmer_id.toString()))];

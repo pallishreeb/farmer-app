@@ -11,7 +11,10 @@ exports.addcategory = async (req, res) => {
 
   // Create a category
   const category = new CropType({
+    parentCategory:req.body.parentCategory,
     name: req.body.name,
+    price: req.body.price,
+    unit: req.body.unit,
   });
 
   category
@@ -31,10 +34,61 @@ exports.addcategory = async (req, res) => {
 exports.getcategory = async (req, res) => {
     const findres = await CropType.find({});
     if (findres.length === 0) {
-      return res.status(404).send({ message: "No crops found." });
+      return res.status(404).send({ message: "No category found." });
     } else {
-      res.send({ message: "Crops found.", data: findres });
+      res.send({ message: "Categories found.", data: findres });
     }
+};
+
+exports.getCropCategorybyname = async (req, res) => {
+  let findresult = await CropType.find({ name: req.body.name });
+  if (!findresult)
+    return res.status(404).send({ message: "No category found." });
+
+  res.status(200).send({ status: true, result: findresult });
+};
+exports.editCategory = async (req, res) => {
+  const categoryId = req.params.id; 
+  const {parentCategory, name, price, unit } = req.body;
+
+  try {
+    let category = await CropType.findById(categoryId);
+
+    if (!category) {
+      return res.status(404).send({ message: "Category not found." });
+    }
+
+    category.parentCategory = parentCategory || category.parentCategory
+    category.name = name || category.name;
+    category.price = price || category.price;
+    category.unit = unit || category.unit;
+
+    const updatedCategory = await category.save();
+    res.send(updatedCategory);
+  } catch (err) {
+    res.status(500).send({
+      message: err.message || "Error updating the category.",
+    });
+  }
+};
+
+exports.deleteCategory = async (req, res) => {
+  const categoryId = req.params.id; 
+
+  try {
+    const category = await CropType.findById(categoryId);
+
+    if (!category) {
+      return res.status(404).send({ message: "Category not found." });
+    }
+
+    await category.remove();
+    res.send({ message: "Category deleted successfully!" });
+  } catch (err) {
+    res.status(500).send({
+      message: err.message || "Error deleting the category.",
+    });
+  }
 };
 
 exports.addSubcategory = async (req, res) => {
@@ -77,14 +131,6 @@ exports.addSubcategory = async (req, res) => {
       message: "Crop Category not found",
     });
   }
-};
-
-exports.getCropCategorybyname = async (req, res) => {
-  let findresult = await CropType.find({ name: req.body.name });
-  if (!findresult)
-    return res.status(404).send({ message: "No category found." });
-
-  res.status(200).send({ status: true, result: findresult });
 };
 
 exports.addCropSubcategory = async (req, res) => {

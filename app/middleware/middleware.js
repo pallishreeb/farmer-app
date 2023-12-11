@@ -198,6 +198,38 @@ const verifyFarmerOrBuyer = (userType) =>{
     }
   };
 }
+
+
+const verifyAdmin = (userType) =>{
+  return async function (req, res, next) {
+    const token = req.headers["x-access-token"];
+    if (!token) {
+      return res.status(401).json({ error: "Token not provided" });
+    }
+
+    try {
+      const decoded = jwt.verify(token, config.SECRET);
+      // console.log(decoded.id, "decoded");
+      const user = await Admin.findOne({
+        _id: decoded.id,
+      });
+      if (!user) {
+        return res.status(401).json({ error: "Invalid token" });
+      }
+
+      console.log(user.userType === "admin");
+      console.log(userType === "admin");
+      if (user.userType !== "admin" && userType !== "admin") {
+        return res.status(403).json({ error: "Access denied" });
+      }
+      req.user = decoded;
+      // console.log(req.user, "req.user");
+      next();
+    } catch (err) {
+      return res.status(401).json({ error: "Invalid token", data: err });
+    }
+  };
+}
 module.exports = {
   BuyerToken,
   FarmerToken,
@@ -206,5 +238,6 @@ module.exports = {
   verifyType,
   verifyBuyer,
   verifyFarmer,
-  verifyFarmerOrBuyer
+  verifyFarmerOrBuyer,
+  verifyAdmin
 };

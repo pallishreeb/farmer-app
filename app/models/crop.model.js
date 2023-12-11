@@ -16,11 +16,6 @@ const Cropschema = mongoose.Schema({
         required: true,
     },
     categoryname: String,
-    // subcategoryname: String,
-    // subcategorytype: String,
-    // baseprice:Array,
-    // saleprice:Array,
-    // quoteprice:Array
     price:{
         type: Number,
         required: true,
