@@ -255,6 +255,8 @@ app.post('/api/orders',[TokenObj.verifyBuyer('buyer')],order.createOrder);
 app.get('/api/orders/buyer/:buyerId',[TokenObj.verifyBuyer('buyer')],order.getOrdersForBuyer);
 // Get All Orders for a Farmer
 app.get('/api/orders/farmer/:farmerId',[TokenObj.verifyFarmer('farmer') ],order.getOrdersForfarmer);
+// Get All Orders for an admin
+app.get('/api/orders',[TokenObj.verifyAdmin('admin') ],order.getOrdersForAdmin);
 // Get Single Order Details
 app.get('/api/orders/:orderId', [TokenObj.verifyToken], order.getOrderDetails);
 //Edit an order

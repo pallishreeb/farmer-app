@@ -72,6 +72,19 @@ exports.getOrdersForfarmer  = async (req, res) => {
   }
 };
 
+// Get All Orders for a Farmer
+exports.getOrdersForAdmin  = async (req, res) => {
+  try {
+    // Find orders for the specific farmer
+    const orders = await Order.find({}).populate('buyerId').populate('farmer_id');
+
+    res.status(200).json(orders);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
 // Get Single Order Details
 exports.getOrderDetails = async (req, res) => {
   try {
