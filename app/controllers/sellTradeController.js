@@ -1,4 +1,5 @@
 const SellModel = require("../models/sellTrade.model")
+const Order = require("../models/orders.model")
 const path = require('path');
 const fs = require('fs');
 const mongoose = require("mongoose")
@@ -119,6 +120,8 @@ exports.DeleteSellTrade = async (req,res)=>{
     const id = req.params.id
     let findresult = await SellModel.findByIdAndDelete({_id:id});
     if(!findresult)return res.status(500).send({Message:"Can't found data"})
+      // Delete associated orders
+      await Order.deleteMany({ tradeId: productId });
     if(findresult=="")return res.status(500).send({Message:"oops Empty Set"})
     res.status(200).send({msg:"Data Deleted", status: true });
 }
@@ -133,8 +136,7 @@ exports.getVariety = async (req, res) => {
     };
     res.send({ MSG: "Get List Of Varieties", Data: allVarieties });
   };
-  
-  
+   
 exports.GetMySellTrade = async (req,res)=>{
     const farmer_id = req.user.id;
     let findresult = await SellModel.find({farmer_id: mongoose.Types.ObjectId(farmer_id)});
