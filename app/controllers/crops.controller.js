@@ -47,6 +47,13 @@ exports.getCropCategorybyname = async (req, res) => {
 
   res.status(200).send({ status: true, result: findresult });
 };
+exports.getCategorybyParent= async (req, res) => {
+  let findresult = await CropType.find({ parentCategory: req.query.name });
+  if (!findresult)
+    return res.status(404).send({ message: "No category found." });
+
+  res.status(200).send({ status: true, result: findresult });
+};
 exports.editCategory = async (req, res) => {
   const categoryId = req.params.id; 
   const {parentCategory, name, price, unit } = req.body;

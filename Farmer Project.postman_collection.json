@@ -1,0 +1,3938 @@
+{
+	"info": {
+		"_postman_id": "2c4132c6-5801-4c06-80cd-5ee01a73624f",
+		"name": "Farmer Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29496726"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "register Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\":\"7751083332\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/admin/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Admin image",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/admin/profile/64830ae082c7b340f071f35a",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"profile",
+								"64830ae082c7b340f071f35a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Admin",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "fullName",
+									"value": "abcddDr",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "Surat",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "to:-surat",
+									"type": "text"
+								},
+								{
+									"key": "village",
+									"value": "Bhatha",
+									"type": "text"
+								},
+								{
+									"key": "postOffice",
+									"value": "Bhatha",
+									"type": "text"
+								},
+								{
+									"key": "tehsil",
+									"value": "surat",
+									"type": "text"
+								},
+								{
+									"key": "taluka",
+									"value": "Surat",
+									"type": "text"
+								},
+								{
+									"key": "zipCode",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "Gujarat",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "7751083332",
+									"type": "text"
+								},
+								{
+									"key": "profilePicture",
+									"type": "file",
+									"src": "/C:/Users/admin/Desktop/Familyfloter.png"
+								},
+								{
+									"key": "userType",
+									"value": "admin",
+									"type": "default"
+								},
+								{
+									"key": "firmName",
+									"value": "abcddDr",
+									"type": "default"
+								},
+								{
+									"key": "firmAddress",
+									"value": "Surat",
+									"type": "default"
+								},
+								{
+									"key": "location",
+									"value": "Surat",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/admin/update/64830ae082c7b340f071f35a",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"update",
+								"64830ae082c7b340f071f35a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"phone\": 7751083332 ,\r\n        \"otp\": 2251\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/admin/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send otp to Admin",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"phone\": 9920158550\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/admin/sendotp",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"sendotp"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sell Trade",
+			"item": [
+				{
+					"name": "Create sell Trade",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZhZTM2YTNiODI3MDVmYzIwNDAyMSIsInBob25lIjoiMTIzNDU2Nzg5MSIsImlhdCI6MTY4MDg1MzI0MiwiZXhwIjoxNjgwOTM5NjQyfQ.Jh_NSCUEaTm3V1_3KImCm-urtEDLMbPWYqZK5hBx-O0",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "pickuplocation",
+									"value": "surat1",
+									"type": "default"
+								},
+								{
+									"key": "category",
+									"value": "crop",
+									"type": "default"
+								},
+								{
+									"key": "product",
+									"value": "wheat",
+									"type": "default"
+								},
+								{
+									"key": "variety",
+									"value": "tukdi",
+									"type": "default"
+								},
+								{
+									"key": "grade",
+									"value": "a+",
+									"type": "default"
+								},
+								{
+									"key": "price",
+									"value": "250",
+									"type": "default"
+								},
+								{
+									"key": "quantity",
+									"value": "40 Ton",
+									"type": "default"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/admin/Downloads/Hotpot.png"
+								},
+								{
+									"key": "Date",
+									"value": "26-07-2023",
+									"type": "default"
+								},
+								{
+									"key": "username",
+									"value": "test1234",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/selltrade/selltrade",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"selltrade",
+								"selltrade"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Sell Trade",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODMwYWUwODJjN2IzNDBmMDcxZjM1YSIsInBob25lIjo5OTIwMTU4NTYwLCJpYXQiOjE2OTAzMDEwODEsImV4cCI6MTY5MDM4NzQ4MX0.nW7wbLUSGNv8o7iPHvJBcgnxPFsa_EvRlwtur7tnqzA",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/selltrade/getselltrade",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"selltrade",
+								"getselltrade"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById Sell Trade",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZhZTM2YTNiODI3MDVmYzIwNDAyMSIsInBob25lIjoiMTIzNDU2Nzg5MSIsImlhdCI6MTY4MDg1MzI0MiwiZXhwIjoxNjgwOTM5NjQyfQ.Jh_NSCUEaTm3V1_3KImCm-urtEDLMbPWYqZK5hBx-O0",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/api/selltrade/getselltradebyid/642fc99afddaf51baca711b7",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"selltrade",
+								"getselltradebyid",
+								"642fc99afddaf51baca711b7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-images-for-trade",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjZkZWRjNDMwYzI5MjJiYzQ2NGNjNyIsInBob25lIjo4NzAwOTEyOTQ0LCJpYXQiOjE2OTY1MTM5MzUsImV4cCI6MTY5NjYwMDMzNX0.p8Ml_hmdeop5tieXZn0i8HDEEBWw9m-SRrydAUTGe34",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/selltrade/image/6515572a07d2f92679dba364",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"selltrade",
+								"image",
+								"6515572a07d2f92679dba364"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Sell Trade",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZhZTM2YTNiODI3MDVmYzIwNDAyMSIsInBob25lIjoiMTIzNDU2Nzg5MSIsImlhdCI6MTY4MDg1MzI0MiwiZXhwIjoxNjgwOTM5NjQyfQ.Jh_NSCUEaTm3V1_3KImCm-urtEDLMbPWYqZK5hBx-O0",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "pickuplocation",
+									"value": "updated surat",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "cropa",
+									"type": "text"
+								},
+								{
+									"key": "product",
+									"value": "wheata",
+									"type": "text"
+								},
+								{
+									"key": "variety",
+									"value": "tukdia",
+									"type": "text"
+								},
+								{
+									"key": "grade",
+									"value": "a+a",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "5000",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "40 Ton",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/admin/Desktop/family-helth-bg.png"
+								},
+								{
+									"key": "name",
+									"value": "ilesh",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3001/api/selltrade/selltrade/update/642fc99afddaf51baca711b7",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"selltrade",
+								"selltrade",
+								"update",
+								"642fc99afddaf51baca711b7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete SellTrade",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZhZTM2YTNiODI3MDVmYzIwNDAyMSIsInBob25lIjoiMTIzNDU2Nzg5MSIsImlhdCI6MTY4MDg1MzI0MiwiZXhwIjoxNjgwOTM5NjQyfQ.Jh_NSCUEaTm3V1_3KImCm-urtEDLMbPWYqZK5hBx-O0",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/selltrade/selltrade/delete/642fc905fddaf51baca711b6",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"selltrade",
+								"selltrade",
+								"delete",
+								"642fc905fddaf51baca711b6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Retailer",
+			"item": [
+				{
+					"name": "register retailer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWE4NjJkMzlhMmRlMTlhOGI4MzY4NiIsInBob25lIjoiOTU0MTIzNjg3NiIsInVzZXJUeXBlIjoiYWRtaW4iLCJvdHAiOjc3MjIsImlhdCI6MTY3OTU1MDE3OSwiZXhwIjoxNjc5NjM2NTc5fQ.kw-ArPo3QIgkRj-ymioBiqdia7rv0MEgBdl-A5v1Tic",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "fullName",
+									"value": "Reatailer",
+									"type": "default"
+								},
+								{
+									"key": "farmName",
+									"value": "Radhe Farm",
+									"type": "default"
+								},
+								{
+									"key": "farmAddress",
+									"value": "surat",
+									"type": "default"
+								},
+								{
+									"key": "city",
+									"value": "surat",
+									"type": "default"
+								},
+								{
+									"key": "state",
+									"value": "gujarat",
+									"type": "default"
+								},
+								{
+									"key": "landmark",
+									"value": "landmark",
+									"type": "default"
+								},
+								{
+									"key": "pincode",
+									"value": "123456",
+									"type": "default"
+								},
+								{
+									"key": "phone",
+									"value": "123456789",
+									"type": "default"
+								},
+								{
+									"key": "profilePicture",
+									"type": "file",
+									"src": "/E:/tessrect_module/download.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/reatailer/registerRetailer",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"reatailer",
+								"registerRetailer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get retailer",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZhZTM2YTNiODI3MDVmYzIwNDAyMSIsInBob25lIjoiMTIzNDU2Nzg5MSIsImlhdCI6MTY4MTE5NDI0OSwiZXhwIjoxNjgxMjgwNjQ5fQ.tqgqm7BxDmNNVdm5a4DQDhIw_Qe7sysxv0zQlilO5V8",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/reatailer/getretailer",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"reatailer",
+								"getretailer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get retailer profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZhZTM2YTNiODI3MDVmYzIwNDAyMSIsInBob25lIjoiMTIzNDU2Nzg5MSIsImlhdCI6MTY4MTE5NDI0OSwiZXhwIjoxNjgxMjgwNjQ5fQ.tqgqm7BxDmNNVdm5a4DQDhIw_Qe7sysxv0zQlilO5V8",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/reatailer/getretailerprofile/6434fbbc3689e845ec46429b",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"reatailer",
+								"getretailerprofile",
+								"6434fbbc3689e845ec46429b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update retailer byid",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZhZTM2YTNiODI3MDVmYzIwNDAyMSIsInBob25lIjoiMTIzNDU2Nzg5MSIsImlhdCI6MTY4MTE5NDk2MywiZXhwIjoxNjgxMjgxMzYzfQ.MHhTgzHxmr9YN-RzilAJowy7W2vQTHiEeSnyCpclt-U",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "fullName",
+									"value": "Reatailer update",
+									"type": "text"
+								},
+								{
+									"key": "farmName",
+									"value": "Radhe Farm update",
+									"type": "text"
+								},
+								{
+									"key": "farmAddress",
+									"value": "surat",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "surat",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "gujarat",
+									"type": "text"
+								},
+								{
+									"key": "landmark",
+									"value": "landmark",
+									"type": "text"
+								},
+								{
+									"key": "pincode",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "123456789",
+									"type": "text"
+								},
+								{
+									"key": "profilePicture",
+									"type": "file",
+									"src": "/E:/Farmer_Master - Copy/app/upload/farmer_profile/profilePicture_1680948372170_1677646883107-bgimg.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/reatailer/updateretailerbyid/6434fbbc3689e845ec46429b",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"reatailer",
+								"updateretailerbyid",
+								"6434fbbc3689e845ec46429b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout retailer",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZhZTM2YTNiODI3MDVmYzIwNDAyMSIsInBob25lIjoiMTIzNDU2Nzg5MSIsImlhdCI6MTY4MTE5NDk5OCwiZXhwIjoxNjgxMjgxMzk4fQ.Kl-ADu4qLXsWHsyUXYbW_zGgAi6higqXTI7l5n3S_5Q",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/reatailer/logoutretailer/6434fbbc3689e845ec46429b",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"reatailer",
+								"logoutretailer",
+								"6434fbbc3689e845ec46429b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dealers",
+			"item": [
+				{
+					"name": "create dealer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZhZTM2YTNiODI3MDVmYzIwNDAyMSIsInBob25lIjoiMTIzNDU2Nzg5MSIsImlhdCI6MTY4MDg1MzI0MiwiZXhwIjoxNjgwOTM5NjQyfQ.Jh_NSCUEaTm3V1_3KImCm-urtEDLMbPWYqZK5hBx-O0",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"dealer\",\r\n    \"phone\":\"1234567895\", \r\n    \"email\":\"dealer@gmail.com\" , \r\n    \"password\":\"123456\",\r\n    \"locality\":\"dealer\",\r\n    \"city\":\"surat\" ,\r\n    \"state\":\"gujarat\" ,\r\n    \"taluka\": \"surat\",\r\n    \"country\":\"India\",\r\n    \"pin\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/dealer/createdealer",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"dealer",
+								"createdealer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get dealers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZhZTM2YTNiODI3MDVmYzIwNDAyMSIsInBob25lIjoiMTIzNDU2Nzg5MSIsIm90cCI6NDg0NSwiaWF0IjoxNjgwODQ4Njg2LCJleHAiOjE2ODA5MzUwODZ9.2fQPSbxI5Yo-v74nwyHbo-miecRp5rU8-MzuDtEjmJY",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/dealer/getdealers",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"dealer",
+								"getdealers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get dealer profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZhZTM2YTNiODI3MDVmYzIwNDAyMSIsInBob25lIjoiMTIzNDU2Nzg5MSIsIm90cCI6NDg0NSwiaWF0IjoxNjgwODQ4Njg2LCJleHAiOjE2ODA5MzUwODZ9.2fQPSbxI5Yo-v74nwyHbo-miecRp5rU8-MzuDtEjmJY",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/dealer/getdealerprofile/642e5a7b1a7e093e900525a4",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"dealer",
+								"getdealerprofile",
+								"642e5a7b1a7e093e900525a4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update dealer byid",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmMwNjIzNGQzNGNiMTJiNDA5ZTQ1ZCIsInBob25lIjoiNTI1MjUyNTI1MiIsIk9UUCI6OTAzOSwiaWF0IjoxNjgwNzYwMjQ5LCJleHAiOjE2ODA4NDY2NDl9.L6wOK4ylROiVEYE0T41GNDHeZ_PhmxofSXSvA-YuA6w",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Indian_dealer\",\r\n    \"phone\":\"1234567895\", \r\n    \"email\":\"dealer@gmail.com\" , \r\n    \"password\":\"123456\",\r\n    \"locality\":\"dealer\",\r\n    \"city\":\"surat\" ,\r\n    \"state\":\"gujarat\" ,\r\n    \"taluk\": \"surat\",\r\n    \"country\":\"India\",\r\n    \"pin\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/dealer/updatedealerbyid/641c1fec71254c1edc447276",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"dealer",
+								"updatedealerbyid",
+								"641c1fec71254c1edc447276"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout dealer",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWE4NjJkMzlhMmRlMTlhOGI4MzY4NiIsInBob25lIjoiOTU0MTIzNjg3NiIsInVzZXJUeXBlIjoiYWRtaW4iLCJvdHAiOjc3MjIsImlhdCI6MTY3OTU1MDE3OSwiZXhwIjoxNjc5NjM2NTc5fQ.kw-ArPo3QIgkRj-ymioBiqdia7rv0MEgBdl-A5v1Tic",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/dealer/logoutdealer/641c1fec71254c1edc447276",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"dealer",
+								"logoutdealer",
+								"641c1fec71254c1edc447276"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Buyer",
+			"item": [
+				{
+					"name": "register buyer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0N2Q4MzE5ODFlNTk1MDQyMGM2MTg4ZCIsInBob25lIjo4ODY1NTIyODgxLCJpYXQiOjE2ODYwNDMzMTEsImV4cCI6MTY4NjEyOTcxMX0.p1FvpRYNdZrgUzKZFWZmDiNWw1i61U07g2WMENERCkA",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fullName",
+									"value": "hello",
+									"type": "text"
+								},
+								{
+									"key": "firmName",
+									"value": "kishan",
+									"type": "text"
+								},
+								{
+									"key": "firmAddress",
+									"value": "surat",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "7788994455",
+									"type": "text"
+								},
+								{
+									"key": "landmark",
+									"value": "buyer",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "surat",
+									"type": "text"
+								},
+								{
+									"key": "pin",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/buyer/createbuyer",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"buyer",
+								"createbuyer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send Buyer OTP",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0N2Q4MzE5ODFlNTk1MDQyMGM2MTg4ZCIsInBob25lIjo4ODY1NTIyODgxLCJpYXQiOjE2ODYwNDMzMTEsImV4cCI6MTY4NjEyOTcxMX0.p1FvpRYNdZrgUzKZFWZmDiNWw1i61U07g2WMENERCkA",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"phone\": 9920158560\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/buyer/sendotp",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"buyer",
+								"sendotp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login Buyer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0N2Q4MzE5ODFlNTk1MDQyMGM2MTg4ZCIsInBob25lIjo4ODY1NTIyODgxLCJpYXQiOjE2ODYwNDMzMTEsImV4cCI6MTY4NjEyOTcxMX0.p1FvpRYNdZrgUzKZFWZmDiNWw1i61U07g2WMENERCkA",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"phone\": 9920158560,\r\n       \"otp\": \"1656\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/buyer/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"buyer",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get buyer",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODFlZjc5MWVhY2UyMjA0ODBlZWQ1ZSIsInBob25lIjo5OTIwMTU4NTYwLCJpYXQiOjE2ODYyMzc2OTYsImV4cCI6MTY4NjMyNDA5Nn0.qAvcvPRyEO1rTf5uTcB5tb3_mnl5iF4R5BTVnQz75TM",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/buyer/getbuyer",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"buyer",
+								"getbuyer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get buyer profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWE4NjJkMzlhMmRlMTlhOGI4MzY4NiIsInBob25lIjoiOTU0MTIzNjg3NiIsInVzZXJUeXBlIjoiYWRtaW4iLCJvdHAiOjc3MjIsImlhdCI6MTY3OTU1MDE3OSwiZXhwIjoxNjc5NjM2NTc5fQ.kw-ArPo3QIgkRj-ymioBiqdia7rv0MEgBdl-A5v1Tic",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/buyer/getbuyerprofile/640c45988b414e19f8cbac4c",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"buyer",
+								"getbuyerprofile",
+								"640c45988b414e19f8cbac4c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update buyer byid",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0N2Q4MzE5ODFlNTk1MDQyMGM2MTg4ZCIsInBob25lIjo4ODY1NTIyODgxLCJpYXQiOjE2ODYwNDMzMTEsImV4cCI6MTY4NjEyOTcxMX0.p1FvpRYNdZrgUzKZFWZmDiNWw1i61U07g2WMENERCkA",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fullName",
+									"value": "hello",
+									"type": "text"
+								},
+								{
+									"key": "country",
+									"value": "indian",
+									"type": "text"
+								},
+								{
+									"key": "taluka",
+									"value": "surat",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "99041440123",
+									"type": "text"
+								},
+								{
+									"key": "locality",
+									"value": "buyer",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "surat",
+									"type": "text"
+								},
+								{
+									"key": "pin",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/buyer/updatebuyerbyid/64800f3abce85418ec3e7fa1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"buyer",
+								"updatebuyerbyid",
+								"64800f3abce85418ec3e7fa1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout buyer",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWE4NjJkMzlhMmRlMTlhOGI4MzY4NiIsInBob25lIjoiOTU0MTIzNjg3NiIsInVzZXJUeXBlIjoiYWRtaW4iLCJvdHAiOjc3MjIsImlhdCI6MTY3OTU1MDE3OSwiZXhwIjoxNjc5NjM2NTc5fQ.kw-ArPo3QIgkRj-ymioBiqdia7rv0MEgBdl-A5v1Tic",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/buyer/logoutbuyer/640c45988b414e19f8cbac4c",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"buyer",
+								"logoutbuyer",
+								"640c45988b414e19f8cbac4c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Crop",
+			"item": [
+				{
+					"name": "add Crop",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjZkZWFlNDMwYzI5MjJiYzQ2NGNjNiIsInBob25lIjo4NzAwOTEyOTMzLCJpYXQiOjE2OTQxOTU0ODcsImV4cCI6MTY5NDI4MTg4N30.k-URBlVyPxbqhaefEV1wXOOJg88SIzcJJCN72lJBWP8",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"names\":{\r\n        \"id\":\"1\",\r\n        \"name\":\"Cucumber\"\r\n    },\r\n    \"price\":\"500\",\r\n    \"categoryname\":\"Vegetables\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/crops/addCropcategory",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"crops",
+								"addCropcategory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add Crop category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzE2OWQ5NzA3MTdlNTFiYzEwMThmMyIsInBob25lIjoxMjM0NTY3ODkxLCJpYXQiOjE2ODY2MzMyMTcsImV4cCI6MTY4NjcxOTYxN30.WzHLpV6KQJVHp5AL5q5PAO6hHOUklMIRCBRm5fT_Ooc",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Vegetable2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/crops/addCropcategory",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"crops",
+								"addCropcategory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Crop Category",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODMwYWUwODJjN2IzNDBmMDcxZjM1YSIsInBob25lIjo5OTIwMTU4NTYwLCJpYXQiOjE2ODY2MzQ2MjcsImV4cCI6MTY4NjcyMTAyN30.jjvG9Fl7gPdNx91nfOyI-Tcg1X1ClXFJWOVpWdUkc0k",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/crops/getCropCategory",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"crops",
+								"getCropCategory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Crop Category Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODMwYWUwODJjN2IzNDBmMDcxZjM1YSIsInBob25lIjo5OTIwMTU4NTYwLCJpYXQiOjE2ODY2MzQ2MjcsImV4cCI6MTY4NjcyMTAyN30.jjvG9Fl7gPdNx91nfOyI-Tcg1X1ClXFJWOVpWdUkc0k",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/crops/getCropCategory",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"crops",
+								"getCropCategory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add Crop Subcategory",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODU5MjcyMjgyZDE0YzI5YTZhZjc2NyIsInBob25lIjo4NTI1ODAwMDAwLCJpYXQiOjE2ODY1NjM3MzcsImV4cCI6MTY4NjY1MDEzN30.Gq6bLz33yQ0KNCdyHlrLn5Bk-E8lWN4iwITXg5pRbCU",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryname\":\"Vegetable\",\r\n    \"subcategoryname\":\"radish\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/crops/addCropSubcategory",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"crops",
+								"addCropSubcategory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Crop Categorybyname",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZhZTM2YTNiODI3MDVmYzIwNDAyMSIsInBob25lIjoiMTIzNDU2Nzg5MSIsImlhdCI6MTY4MTE5NjA3MywiZXhwIjoxNjgxMjgyNDczfQ.IpASlc4jFs04Pe-lhY4ZVP11SBPwbo2y8j1ntuVpuIU",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Vegetable\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/crops/getCropCategorybyname",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"crops",
+								"getCropCategorybyname"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add Crop Price",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzE2OWQ5NzA3MTdlNTFiYzEwMThmMyIsInBob25lIjoxMjM0NTY3ODkxLCJpYXQiOjE2ODY2MzMyMTcsImV4cCI6MTY4NjcxOTYxN30.WzHLpV6KQJVHp5AL5q5PAO6hHOUklMIRCBRm5fT_Ooc",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cropid\": \"64870489a174a742607c66e0\",\r\n    \"baseprice\": [\"1000\"],\r\n    \"saleprice\": [\"1000\"],\r\n    \"quoteprice\": [\"1000\"]\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/crops/addCropPrice",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"crops",
+								"addCropPrice"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crop list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjZkZWFlNDMwYzI5MjJiYzQ2NGNjNiIsInBob25lIjo4NzAwOTEyOTMzLCJpYXQiOjE2OTQxOTU0ODcsImV4cCI6MTY5NDI4MTg4N30.k-URBlVyPxbqhaefEV1wXOOJg88SIzcJJCN72lJBWP8",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/crops/croplist",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"crops",
+								"croplist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Crops by Category name",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODMwYWUwODJjN2IzNDBmMDcxZjM1YSIsInBob25lIjo5OTIwMTU4NTYwLCJpYXQiOjE2ODY2MzQ2MjcsImV4cCI6MTY4NjcyMTAyN30.jjvG9Fl7gPdNx91nfOyI-Tcg1X1ClXFJWOVpWdUkc0k",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/crops/getCropsByCategory?categoryname=Crops",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"crops",
+								"getCropsByCategory"
+							],
+							"query": [
+								{
+									"key": "categoryname",
+									"value": "Crops"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Farmer",
+			"item": [
+				{
+					"name": "send Otp farmer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"phone\": \"8865522881\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/farmer/sendotp",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"farmer",
+								"sendotp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registration farmer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODMwYWUwODJjN2IzNDBmMDcxZjM1YSIsInBob25lIjo5OTIwMTU4NTYwLCJpYXQiOjE2ODYzMTY1MzMsImV4cCI6MTY4NjQwMjkzM30.CqCENYHjd_Xl7KQfxnng0dvImGeoBj2TfgbebBCcLdo",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fullName",
+									"value": "abcddDr",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "Surat",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "to:-surat",
+									"type": "text"
+								},
+								{
+									"key": "village",
+									"value": "Bhatha",
+									"type": "text"
+								},
+								{
+									"key": "postOffice",
+									"value": "Bhatha",
+									"type": "text"
+								},
+								{
+									"key": "tehsil",
+									"value": "surat",
+									"type": "text"
+								},
+								{
+									"key": "taluka",
+									"value": "Surat",
+									"type": "text"
+								},
+								{
+									"key": "zipCode",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "Gujarat",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "9920158560",
+									"type": "text"
+								},
+								{
+									"key": "profilePicture",
+									"value": "",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/buyer/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"buyer",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "farmer login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n        \"phone\": \"8865522881\",\r\n        \"otp\": \"2488\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/farmer/farmerlogin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"farmer",
+								"farmerlogin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get farmers list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODMwYWUwODJjN2IzNDBmMDcxZjM1YSIsInBob25lIjo5OTIwMTU4NTYwLCJpYXQiOjE2ODYzMTY1MzMsImV4cCI6MTY4NjQwMjkzM30.CqCENYHjd_Xl7KQfxnng0dvImGeoBj2TfgbebBCcLdo",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/farmer/getfarmers",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"farmer",
+								"getfarmers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get farmer profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODMwYWUwODJjN2IzNDBmMDcxZjM1YSIsInBob25lIjo5OTIwMTU4NTYwLCJpYXQiOjE2ODYzMTIxOTYsImV4cCI6MTY4NjM5ODU5Nn0.lincZyMq8j1Mbi5hrJKPCpWTzd4yhif97eFy7alwwSU",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/farmer/getfarmerprofile/643169d970717e51bc1018f3",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"farmer",
+								"getfarmerprofile",
+								"643169d970717e51bc1018f3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update farmer byid",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZhZTM2YTNiODI3MDVmYzIwNDAyMSIsInBob25lIjoiMTIzNDU2Nzg5MSIsImlhdCI6MTY4MTIwNDcyNiwiZXhwIjoxNjgxMjkxMTI2fQ.32yOwP2VVxwcWPjtKMJb2w0l7MAAAFh7yoxLPZ-WA1k",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "fullName",
+									"value": "abcdasdsfsdfsdsf",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "Surat",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "to:-surat",
+									"type": "text"
+								},
+								{
+									"key": "village",
+									"value": "Bhatha",
+									"type": "text"
+								},
+								{
+									"key": "postOffice",
+									"value": "Bhatha",
+									"type": "text"
+								},
+								{
+									"key": "tehsil",
+									"value": "surat",
+									"type": "text"
+								},
+								{
+									"key": "taluka",
+									"value": "Surat",
+									"type": "text"
+								},
+								{
+									"key": "zipCode",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "Gujarat",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "123453556781",
+									"type": "text"
+								},
+								{
+									"key": "profilePicture",
+									"type": "file",
+									"src": "/C:/Users/admin/Downloads/Node_World-master/HTML/Myhtml/Images/bgimg.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/farmer/updatefarmerbyid/64800f3abce85418ec3e7fa1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"farmer",
+								"updatefarmerbyid",
+								"64800f3abce85418ec3e7fa1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "getusertype",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZhZTM2YTNiODI3MDVmYzIwNDAyMSIsInBob25lIjoiMTIzNDU2Nzg5MSIsImlhdCI6MTY4MTE5NjA3MywiZXhwIjoxNjgxMjgyNDczfQ.IpASlc4jFs04Pe-lhY4ZVP11SBPwbo2y8j1ntuVpuIU",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/admin/getusertype",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"getusertype"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user detail by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZGIzYzhmYmQ5YzQ5MWMwY2Q0Y2E1YSIsInBob25lIjoiMTIzNDU2Nzg5MCIsIm5hbWUiOiJBbm5hYSIsInVzZXJUeXBlIjoiYWRtaW4iLCJpYXQiOjE2NzkwMzIxMjgsImV4cCI6MTY3OTExODUyOH0.k1M4zg7XjqkVR9XdI-Nfy0B1hBbJBNJkM-OR9zWUK8s",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/admin/userdetailbyid/61423c27532a19f7baffd8c1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"userdetailbyid",
+								"61423c27532a19f7baffd8c1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Lands",
+			"item": [
+				{
+					"name": "land measurement units",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZGIzYzhmYmQ5YzQ5MWMwY2Q0Y2E1YSIsInBob25lIjoiMTIzNDU2Nzg5MCIsIm5hbWUiOiJBbm5hYSIsInVzZXJUeXBlIjoiYWRtaW4iLCJpYXQiOjE2Nzg1MjU1OTQsImV4cCI6MTY3ODYxMTk5NH0.Xb6cFEvOGw6DryJxznoheN5ROQPqvGbGmo9rSfpSqgg",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/admin/landmeasurementunits",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"landmeasurementunits"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "land types",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZhZTM2YTNiODI3MDVmYzIwNDAyMSIsInBob25lIjoiMTIzNDU2Nzg5MSIsImlhdCI6MTY4MTE5NjA3MywiZXhwIjoxNjgxMjgyNDczfQ.IpASlc4jFs04Pe-lhY4ZVP11SBPwbo2y8j1ntuVpuIU",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/admin/landtypes",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"landtypes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "City State",
+			"item": [
+				{
+					"name": "get city state",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZhZTM2YTNiODI3MDVmYzIwNDAyMSIsInBob25lIjoiMTIzNDU2Nzg5MSIsImlhdCI6MTY4MTE5NjkwNiwiZXhwIjoxNjgxMjgzMzA2fQ.nQK12TzQsY0MMww6Q2uTPtPXeTA8OoBNQcI2rUQ5BUU",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/admin/getcitystate",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"getcitystate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Filter Fruits Vegetables Crops",
+			"item": [
+				{
+					"name": "filter Query",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODMwYWUwODJjN2IzNDBmMDcxZjM1YSIsInBob25lIjo5OTIwMTU4NTYwLCJpYXQiOjE2OTA0NjE4NjAsImV4cCI6MTY5MDU0ODI2MH0.1ob3zvl4_NKOri1gWJgYm88dqS0WwprDjgvlrF2m2jE",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Vegetables\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "45.79.127.176:3000/api/filterQuery/getfilterQuery",
+							"host": [
+								"45",
+								"79",
+								"127",
+								"176"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"filterQuery",
+								"getfilterQuery"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "filter commodity",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODMwYWUwODJjN2IzNDBmMDcxZjM1YSIsInBob25lIjo5OTIwMTU4NTYwLCJpYXQiOjE2OTA0NjE4NjAsImV4cCI6MTY5MDU0ODI2MH0.1ob3zvl4_NKOri1gWJgYm88dqS0WwprDjgvlrF2m2jE",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"ddd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "45.79.127.176:3000/api/filterQuery/getfiltercommodity",
+							"host": [
+								"45",
+								"79",
+								"127",
+								"176"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"filterQuery",
+								"getfiltercommodity"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bank",
+			"item": [
+				{
+					"name": "login bank account",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZhZTM2YTNiODI3MDVmYzIwNDAyMSIsInBob25lIjoiMTIzNDU2Nzg5MSIsImlhdCI6MTY4MDg1NDEwOCwiZXhwIjoxNjgwOTQwNTA4fQ.b94KLn_jR9wnf8IWRLAukMcHZpkCfIHn83Sk5lNf9R4",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"beneficiaryName\":\"bank\",\r\n    \"beneficiaryLastName\":\"bank\",\r\n    \"bankCode\":\"ABc456\",\r\n    \"ifscCode\":\"SBIA0123450\",\r\n    \"bankAccountNumber\":\"12345678901235\",\r\n    \"address\":\"So\",\r\n    \"email\":\"bank@gmail.com\",\r\n    \"mobileNumber\":\"1234567891\",\r\n    \"gstInNumber\":\"24AAFFG8339R1ZW\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/bank/loginbankaccount",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"bank",
+								"loginbankaccount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get bank account",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZhZTM2YTNiODI3MDVmYzIwNDAyMSIsInBob25lIjoiMTIzNDU2Nzg5MSIsImlhdCI6MTY4MDg1NDEwOCwiZXhwIjoxNjgwOTQwNTA4fQ.b94KLn_jR9wnf8IWRLAukMcHZpkCfIHn83Sk5lNf9R4",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/bank/getbankaccount",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"bank",
+								"getbankaccount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get bank account byid",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZhZTM2YTNiODI3MDVmYzIwNDAyMSIsInBob25lIjoiMTIzNDU2Nzg5MSIsImlhdCI6MTY4MDg1NDEwOCwiZXhwIjoxNjgwOTQwNTA4fQ.b94KLn_jR9wnf8IWRLAukMcHZpkCfIHn83Sk5lNf9R4",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/bank/getbankaccountById/642fcc9b21c0103c4066b728",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"bank",
+								"getbankaccountById",
+								"642fcc9b21c0103c4066b728"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update bank account",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZGIzYzhmYmQ5YzQ5MWMwY2Q0Y2E1YSIsInBob25lIjoiMTIzNDU2Nzg5MCIsIm5hbWUiOiJBbm5hYSIsInVzZXJUeXBlIjoiYWRtaW4iLCJpYXQiOjE2Nzg1MjU1OTQsImV4cCI6MTY3ODYxMTk5NH0.Xb6cFEvOGw6DryJxznoheN5ROQPqvGbGmo9rSfpSqgg",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"beneficiaryName\":\"this is updated bank\",\r\n    \"beneficiaryLastName\":\"bank\",\r\n    \"bankCode\":\"ABc456\",\r\n    \"ifscCode\":\"SBIA0123450\",\r\n    \"bankAccountNumber\":\"12345678901235\",\r\n    \"address\":\"So\",\r\n    \"email\":\"bank@gmail.com\",\r\n    \"mobileNumber\":\"1234567891\",\r\n    \"gstInNumber\":\"24AAFFG8339R1ZW\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/bank/updatebankaccount/642fcc9b21c0103c4066b728",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"bank",
+								"updatebankaccount",
+								"642fcc9b21c0103c4066b728"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete bank account",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZGIzYzhmYmQ5YzQ5MWMwY2Q0Y2E1YSIsInBob25lIjoiMTIzNDU2Nzg5MCIsIm5hbWUiOiJBbm5hYSIsInVzZXJUeXBlIjoiYWRtaW4iLCJpYXQiOjE2Nzg1MjU1OTQsImV4cCI6MTY3ODYxMTk5NH0.Xb6cFEvOGw6DryJxznoheN5ROQPqvGbGmo9rSfpSqgg",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/bank/deletebankaccount/63dcd3ecd4ab842a20871d6f",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"bank",
+								"deletebankaccount",
+								"63dcd3ecd4ab842a20871d6f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Add Farm",
+			"item": [
+				{
+					"name": "add farm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODU5MjcyMjgyZDE0YzI5YTZhZjc2NyIsInBob25lIjo4NTI1ODAwMDAwLCJpYXQiOjE2ODY1NTY2MjQsImV4cCI6MTY4NjY0MzAyNH0.y4w1JLms7NtTYFqUwJx66np4znrdretKfhgRDT7OslU",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"soil_type\":\"Alluvial Soal\",\r\n    \"land_type\":\"Irrigated Land\",\r\n    \"farmer_id\":\"64845d80282d14c29a6af765\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/farmer/addfarm",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"farmer",
+								"addfarm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all farm",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODU5MjcyMjgyZDE0YzI5YTZhZjc2NyIsInBob25lIjo4NTI1ODAwMDAwLCJpYXQiOjE2ODY1NTY2MjQsImV4cCI6MTY4NjY0MzAyNH0.y4w1JLms7NtTYFqUwJx66np4znrdretKfhgRDT7OslU",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/farmer/getallfarm",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"farmer",
+								"getallfarm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get farmer farm",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZhZTM2YTNiODI3MDVmYzIwNDAyMSIsInBob25lIjoiMTIzNDU2Nzg5MSIsImlhdCI6MTY4MTEwNzExNSwiZXhwIjoxNjgxMTA3MTE1fQ._l27t88cgugL0tCLi3D6zQRsSnzeEmLZEG6iyl4c7Gs",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"647b3aa0629c091bfc2f3047\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/farmer/getfarmers",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"farmer",
+								"getfarmers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Farming Type",
+			"item": [
+				{
+					"name": "add reguler farming",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"soilType\":\"Black Soil\",\r\n    \"regulerFarmingType\":\"Horticulture\",\r\n    \"cropQuantity\":\"5\",\r\n    \"farmer_id\":\"642ec7b1f2a1bc18ac7c1cec\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/farmingtype/addregulerfarming",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"farmingtype",
+								"addregulerfarming"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get reguler farming",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/farmingtype/getregulerfarming",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"farmingtype",
+								"getregulerfarming"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add contract farming",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"soilType\":\"Black Soil\",\r\n    \"cropQuantity\":\"10\",\r\n    \"farmer_id\":\"642ec7b1f2a1bc18ac7c1cec\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/farmingtype/addcontractfarming",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"farmingtype",
+								"addcontractfarming"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get contract farming",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/farmingtype/getcontractfarming",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"farmingtype",
+								"getcontractfarming"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add organic farming",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"soilType\":\"Forest Soil\",\r\n    \"landType\":\"Non-Irrigated Land\",\r\n    \"organicFarmType\":\"Crop Rotation\",\r\n    \"organicFarmingMethod\":\"Compost Management\",\r\n    \"farmer_id\":\"642ec7b1f2a1bc18ac7c1cec\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/farmingtype/addorganicfarming",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"farmingtype",
+								"addorganicfarming"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get organic farming",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/farmingtype/getorganicfarming",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"farmingtype",
+								"getorganicfarming"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Verification",
+			"item": [
+				{
+					"name": "add adhar card",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "adharNumber",
+									"value": "367598346015",
+									"type": "default"
+								},
+								{
+									"key": "frontSidePhoto",
+									"type": "file",
+									"src": "/C:/Users/admin/OneDrive/Pictures/Screenshots/16-3-23_Task.png"
+								},
+								{
+									"key": "backSidePhoto",
+									"type": "file",
+									"src": "/C:/Users/admin/OneDrive/Pictures/Screenshots/docker.png"
+								},
+								{
+									"key": "farmer_id",
+									"value": "642d80332dde5d41c8e98ed1",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/verification/addadharcard",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"verification",
+								"addadharcard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add pan card",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "panNumber",
+									"value": "367598346015",
+									"type": "default"
+								},
+								{
+									"key": "panCardPhoto",
+									"type": "file",
+									"src": "/C:/Users/admin/OneDrive/Pictures/Screenshots/16-3-23_Task.png"
+								},
+								{
+									"key": "farmer_id",
+									"value": "642d80332dde5d41c8e98ed1",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/verification/addpancard",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"verification",
+								"addpancard"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Temperature",
+			"item": [
+				{
+					"name": "Get Temperature",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZhZTM2YTNiODI3MDVmYzIwNDAyMSIsInBob25lIjoiMTIzNDU2Nzg5MSIsIm90cCI6NDg0NSwiaWF0IjoxNjgwODQ2NDA2LCJleHAiOjE2ODA5MzI4MDZ9.8-LZpm_OMmDXRlcS3Sy9dd2VaAB56u0qte-J9KdoDpM",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/temperature/get?lat=21.2455798&lon=72.8736448",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"temperature",
+								"get"
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "21.2455798"
+								},
+								{
+									"key": "lon",
+									"value": "72.8736448"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Raise Query",
+			"item": [
+				{
+					"name": "create Raise Query",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODMwYWUwODJjN2IzNDBmMDcxZjM1YSIsInBob25lIjo5OTIwMTU4NTYwLCJpYXQiOjE2OTA1Mjc0MjAsImV4cCI6MTY5MDYxMzgyMH0.Lz3sy-JIOapEQPohYTNKBZ8y3n08iu8KE0mXuvT2w9k",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"buyer_username\":\"Test buyer\",\r\n    \"minimum_order_quantity\":\"20\",\r\n    \"harvesting_time\":\"5 day\",\r\n    \"delivery_date_time\":\"2 day\",\r\n    \"product_delivered_states\":\"Yes\",\r\n    \"urgent_order_time\":\"2 day\",\r\n    \"status\":\"Pending\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "45.79.127.176:3000/api/raisequery/add",
+							"host": [
+								"45",
+								"79",
+								"127",
+								"176"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"raisequery",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getRaise Query",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODMwYWUwODJjN2IzNDBmMDcxZjM1YSIsInBob25lIjo5OTIwMTU4NTYwLCJpYXQiOjE2OTA1Mjc0MjAsImV4cCI6MTY5MDYxMzgyMH0.Lz3sy-JIOapEQPohYTNKBZ8y3n08iu8KE0mXuvT2w9k",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "45.79.127.176:3000/api/raisequery/get",
+							"host": [
+								"45",
+								"79",
+								"127",
+								"176"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"raisequery",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id Raise Query",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODMwYWUwODJjN2IzNDBmMDcxZjM1YSIsInBob25lIjo5OTIwMTU4NTYwLCJpYXQiOjE2OTA1Mjc0MjAsImV4cCI6MTY5MDYxMzgyMH0.Lz3sy-JIOapEQPohYTNKBZ8y3n08iu8KE0mXuvT2w9k",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "45.79.127.176:3000/api/raisequery/get/64c366f5b1b09ae01eed0b5f",
+							"host": [
+								"45",
+								"79",
+								"127",
+								"176"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"raisequery",
+								"get",
+								"64c366f5b1b09ae01eed0b5f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Raise Query",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODMwYWUwODJjN2IzNDBmMDcxZjM1YSIsInBob25lIjo5OTIwMTU4NTYwLCJpYXQiOjE2OTA1Mjc0MjAsImV4cCI6MTY5MDYxMzgyMH0.Lz3sy-JIOapEQPohYTNKBZ8y3n08iu8KE0mXuvT2w9k",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"buyer_username\":\"buyer\",\r\n    \"minimum_order_quantity\":\"30\",\r\n    \"harvesting_time\":\"75 day\",\r\n    \"delivery_date_time\":\"2 day\",\r\n    \"product_delivered_states\":\"Yes\",\r\n    \"urgent_order_time\":\"2 day\",\r\n    \"status\":\"Pending\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "45.79.127.176:3000/api/raisequery/update/64c366f5b1b09ae01eed0b5f",
+							"host": [
+								"45",
+								"79",
+								"127",
+								"176"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"raisequery",
+								"update",
+								"64c366f5b1b09ae01eed0b5f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Raise Query",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODMwYWUwODJjN2IzNDBmMDcxZjM1YSIsInBob25lIjo5OTIwMTU4NTYwLCJpYXQiOjE2OTA1Mjc0MjAsImV4cCI6MTY5MDYxMzgyMH0.Lz3sy-JIOapEQPohYTNKBZ8y3n08iu8KE0mXuvT2w9k",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "45.79.127.176:3000/api/raisequery/delete/64c366f5b1b09ae01eed0b5f",
+							"host": [
+								"45",
+								"79",
+								"127",
+								"176"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"raisequery",
+								"delete",
+								"64c366f5b1b09ae01eed0b5f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "contract-farming",
+			"item": [
+				{
+					"name": "myContractFarming requests",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjZkZjEwNDMwYzI5MjJiYzQ2NGNjOCIsInBob25lIjo4NzAwOTEyOTU1LCJpYXQiOjE2OTQwMjU3ODcsImV4cCI6MTY5NDExMjE4N30.th5WGofdi5H47L59I93nAkNOW9WMwt9EE9qQXm6BL_Q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/contract/myFarmingRequests",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"contract",
+								"myFarmingRequests"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all contract farming farmers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjZkZjEwNDMwYzI5MjJiYzQ2NGNjOCIsInBob25lIjo4NzAwOTEyOTU1LCJpYXQiOjE2OTQwMjU3ODcsImV4cCI6MTY5NDExMjE4N30.th5WGofdi5H47L59I93nAkNOW9WMwt9EE9qQXm6BL_Q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/contract/contractFarmers?commodityName=mango",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"contract",
+								"contractFarmers"
+							],
+							"query": [
+								{
+									"key": "commodityName",
+									"value": "mango"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send contract farming request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjZkZjEwNDMwYzI5MjJiYzQ2NGNjOCIsInBob25lIjo4NzAwOTEyOTU1LCJpYXQiOjE2OTQwMjU3ODcsImV4cCI6MTY5NDExMjE4N30.th5WGofdi5H47L59I93nAkNOW9WMwt9EE9qQXm6BL_Q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"location\":\"test233\",\n    \"quality\":\"good\",\n    \"quantity\":12,\n    \"farmersToRequest\":[\"64f6deae430c2922bc464cc6\"],\n    \"category\":\"test\",\n    \"commodity\":\"test\",\n    \"deliveryTime\":\"20-09-2023\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/contract/contractFarmRequest",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"contract",
+								"contractFarmRequest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Single contract farming details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjZkZjEwNDMwYzI5MjJiYzQ2NGNjOCIsInBob25lIjo4NzAwOTEyOTU1LCJpYXQiOjE2OTQwMjU3ODcsImV4cCI6MTY5NDExMjE4N30.th5WGofdi5H47L59I93nAkNOW9WMwt9EE9qQXm6BL_Q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/contract/farmingRequest?farmingRequestId=64f8c959b6ea4713e325c615",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"contract",
+								"farmingRequest"
+							],
+							"query": [
+								{
+									"key": "farmingRequestId",
+									"value": "64f8c959b6ea4713e325c615"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Contract FarmingRequests",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjZkZjEwNDMwYzI5MjJiYzQ2NGNjOCIsInBob25lIjo4NzAwOTEyOTU1LCJpYXQiOjE2OTQwMjU3ODcsImV4cCI6MTY5NDExMjE4N30.th5WGofdi5H47L59I93nAkNOW9WMwt9EE9qQXm6BL_Q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/contract/allFarmingRequests",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"contract",
+								"allFarmingRequests"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete contract farming ",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODFlZjc5MWVhY2UyMjA0ODBlZWQ1ZSIsInBob25lIjo5OTIwMTU4NTYwLCJpYXQiOjE2OTM5Mzc4NzQsImV4cCI6MTY5NDAyNDI3NH0.kIzRkO4QkHD94W66xz-7oyo9xySLShesScJO0X5rPNQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/contract/deleteFarmingRequest?farmingRequestId=64f7710196b6282fb57202a1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"contract",
+								"deleteFarmingRequest"
+							],
+							"query": [
+								{
+									"key": "farmingRequestId",
+									"value": "64f7710196b6282fb57202a1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update accepted FarmingRequest",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjZkZWRjNDMwYzI5MjJiYzQ2NGNjNyIsInBob25lIjo4NzAwOTEyOTQ0LCJpYXQiOjE2OTQwMjYyNzgsImV4cCI6MTY5NDExMjY3OH0.VS1BeKHFFbZH8Z2_G_IqWzkZ_pBzS9g0JtzYR-LsMzI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"farmerId\":\"64f6deae430c2922bc464cc6\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/contract/acceptFarmingRequest?farmingRequestId=64f8c959b6ea4713e325c615",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"contract",
+								"acceptFarmingRequest"
+							],
+							"query": [
+								{
+									"key": "farmingRequestId",
+									"value": "64f8c959b6ea4713e325c615"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Delivered FarmingRequest",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjZkZjEwNDMwYzI5MjJiYzQ2NGNjOCIsInBob25lIjo4NzAwOTEyOTU1LCJpYXQiOjE2OTQwMjU3ODcsImV4cCI6MTY5NDExMjE4N30.th5WGofdi5H47L59I93nAkNOW9WMwt9EE9qQXm6BL_Q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \n    \"farmerId\":\"64f6deae430c2922bc464cc6\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/contract/updateDelivered?farmingRequestId=64f8c959b6ea4713e325c615",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"contract",
+								"updateDelivered"
+							],
+							"query": [
+								{
+									"key": "farmingRequestId",
+									"value": "64f8c959b6ea4713e325c615"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "queryMessage",
+			"item": [
+				{
+					"name": "send-message",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjZkZWRjNDMwYzI5MjJiYzQ2NGNjNyIsInBob25lIjo4NzAwOTEyOTQ0LCJpYXQiOjE2OTY1MDg5MjgsImV4cCI6MTY5NjU5NTMyOH0.OHsNeAvitOSDvaWcHwRnM2zMYT67QImlMIdV7Jq5AbE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sender\":\"64f6dedc430c2922bc464cc7\",\n    \"receiver\":\"64f6deae430c2922bc464cc6\",\n    \"text\":\"helo\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/message",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"message"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-messages",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjZkZWRjNDMwYzI5MjJiYzQ2NGNjNyIsInBob25lIjo4NzAwOTEyOTQ0LCJpYXQiOjE2OTY1MDg5MjgsImV4cCI6MTY5NjU5NTMyOH0.OHsNeAvitOSDvaWcHwRnM2zMYT67QImlMIdV7Jq5AbE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sender\":\"64f6deae430c2922bc464cc6\",\n    \"receiver\":\"64f6deae430c2922bc464cc6\",\n    \"text\":\"hii this a message query for farmer\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/messages?userId1=64f6deae430c2922bc464cc6&userId2=64f6deae430c2922bc464cc6",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"messages"
+							],
+							"query": [
+								{
+									"key": "userId1",
+									"value": "64f6deae430c2922bc464cc6"
+								},
+								{
+									"key": "userId2",
+									"value": "64f6deae430c2922bc464cc6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete message",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sender\":\"64f6deae430c2922bc464cc6\",\n    \"receiver\":\"64f6deae430c2922bc464cc6\",\n    \"text\":\"hii this a message query for farmer\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/message?messageId=6515563976be1425b5d2ee8d",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"message"
+							],
+							"query": [
+								{
+									"key": "messageId",
+									"value": "6515563976be1425b5d2ee8d"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMessagesForAnUser",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjZkZWRjNDMwYzI5MjJiYzQ2NGNjNyIsInBob25lIjo4NzAwOTEyOTQ0LCJpYXQiOjE2OTY1MDg5MjgsImV4cCI6MTY5NjU5NTMyOH0.OHsNeAvitOSDvaWcHwRnM2zMYT67QImlMIdV7Jq5AbE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/message/64f6deae430c2922bc464cc6",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"message",
+								"64f6deae430c2922bc464cc6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "create-order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjZkZWRjNDMwYzI5MjJiYzQ2NGNjNyIsInBob25lIjo4NzAwOTEyOTQ0LCJpYXQiOjE2OTY1MDg5MjgsImV4cCI6MTY5NjU5NTMyOH0.OHsNeAvitOSDvaWcHwRnM2zMYT67QImlMIdV7Jq5AbE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n      \"deliveryLocation\":\"abcd\",\n      \"category\":\"abcd\",\n      \"commodity\":\"testing\",\n      \"quality\":\"a\",\n      \"quantity\":\"34\",\n      \"deliveryTime\":\"12/10/2023\",\n      \"tradeId\":\"6515572a07d2f92679dba364\",\n      \"farmer_id\":\"64f6de37430c2922bc464cc5\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/orders",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit-order",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n      \"deliveryLocation\":\"abcd\",\n      \"quantity\":\"34\",\n      \"deliveryTime\":\"12/10/2023\",\n      \"status\":\"Packing\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/orders/:orderId",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								":orderId"
+							],
+							"variable": [
+								{
+									"key": "orderId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buyer-orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjZkZWRjNDMwYzI5MjJiYzQ2NGNjNyIsInBob25lIjo4NzAwOTEyOTQ0LCJpYXQiOjE2OTY1MDg5MjgsImV4cCI6MTY5NjU5NTMyOH0.OHsNeAvitOSDvaWcHwRnM2zMYT67QImlMIdV7Jq5AbE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/orders/buyer/64f6dedc430c2922bc464cc7",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"buyer",
+								"64f6dedc430c2922bc464cc7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "farmers-orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjZkZWRjNDMwYzI5MjJiYzQ2NGNjNyIsInBob25lIjo4NzAwOTEyOTQ0LCJpYXQiOjE2OTY1MDg5MjgsImV4cCI6MTY5NjU5NTMyOH0.OHsNeAvitOSDvaWcHwRnM2zMYT67QImlMIdV7Jq5AbE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/orders/farmer/64f6de37430c2922bc464cc5",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"farmer",
+								"64f6de37430c2922bc464cc5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "order-details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjZkZWRjNDMwYzI5MjJiYzQ2NGNjNyIsInBob25lIjo4NzAwOTEyOTQ0LCJpYXQiOjE2OTY1MDg5MjgsImV4cCI6MTY5NjU5NTMyOH0.OHsNeAvitOSDvaWcHwRnM2zMYT67QImlMIdV7Jq5AbE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/orders/651eac5d45c0050383237d6e",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"651eac5d45c0050383237d6e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/orders/:orderId",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								":orderId"
+							],
+							"variable": [
+								{
+									"key": "orderId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "category",
+			"item": [
+				{
+					"name": "add category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODMwYWUwODJjN2IzNDBmMDcxZjM1YSIsInBob25lIjo3NzUxMDgzMzMyLCJpYXQiOjE3MDIyODg1OTgsImV4cCI6MTcwMjM3NDk5OH0.FzZmwlFmLwAA0aI1JjUKcb-x0KvhCFR701PtkVKzGWY",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Apple\",\r\n    \"unit\":\"K/G\",\r\n    \"price\":\"100\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/category",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete category",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODMwYWUwODJjN2IzNDBmMDcxZjM1YSIsInBob25lIjo3NzUxMDgzMzMyLCJpYXQiOjE3MDIyODg1OTgsImV4cCI6MTcwMjM3NDk5OH0.FzZmwlFmLwAA0aI1JjUKcb-x0KvhCFR701PtkVKzGWY",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"parentCategory\":\"Fruit\",\n    \"name\":\"Apple\",\n    \"unit\":\"K/G\",\n    \"price\":\"100\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/category/6576dfe506f1df067c993382",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"category",
+								"6576dfe506f1df067c993382"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit category",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODMwYWUwODJjN2IzNDBmMDcxZjM1YSIsInBob25lIjo3NzUxMDgzMzMyLCJpYXQiOjE3MDIyODg1OTgsImV4cCI6MTcwMjM3NDk5OH0.FzZmwlFmLwAA0aI1JjUKcb-x0KvhCFR701PtkVKzGWY",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"parentCategory\":\"Vegetable\",\n    \"name\":\"Patato\",\n    \"unit\":\"K/G\",\n    \"price\":\"20\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/category/6576e129d69eec07f1462416",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"category",
+								"6576e129d69eec07f1462416"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get categoryByName",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODMwYWUwODJjN2IzNDBmMDcxZjM1YSIsInBob25lIjo3NzUxMDgzMzMyLCJpYXQiOjE3MDIyODg1OTgsImV4cCI6MTcwMjM3NDk5OH0.FzZmwlFmLwAA0aI1JjUKcb-x0KvhCFR701PtkVKzGWY",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Patato\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/categoryByName",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"categoryByName"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get categories list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODMwYWUwODJjN2IzNDBmMDcxZjM1YSIsInBob25lIjo3NzUxMDgzMzMyLCJpYXQiOjE3MDIyODg1OTgsImV4cCI6MTcwMjM3NDk5OH0.FzZmwlFmLwAA0aI1JjUKcb-x0KvhCFR701PtkVKzGWY",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Patato\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/category",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"category"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

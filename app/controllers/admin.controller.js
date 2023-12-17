@@ -116,7 +116,7 @@ exports.landtypes = (req, res) => {
 
 exports.userdetail = (req, res) => {
     if (req.params && req.params.userid) {
-        User.findOne({ _id: req.params.userid, userType: { $ne: "admin" } }, { password: 0, __v: 0, updatedAt: 0 }, function (err, userdata) {
+        Admin.findOne({ _id: req.params.userid, userType: { $ne: "admin" } }, { password: 0, __v: 0, updatedAt: 0 }, function (err, userdata) {
             if (err) return res.status(500).send({ message: 'Error on the server.' });
             if (!userdata) return res.status(404).send({ message: 'No User found.' });
 

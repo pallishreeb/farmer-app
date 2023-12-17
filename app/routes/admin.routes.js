@@ -267,6 +267,7 @@ app.delete('/api/orders/:orderId',[TokenObj.verifyToken], order.deleteAnOrder);
 //Category API Routes
 app.post('/api/category',[TokenObj.verifyAdmin('admin')], crops.addcategory);
 app.post('/api/categoryByName',[TokenObj.verifyToken],crops.getCropCategorybyname);
+app.get('/api/categoryByParent',[TokenObj.verifyToken],crops.getCategorybyParent);
 app.get('/api/category',[TokenObj.verifyToken],crops.getcategory);
 app.put('/api/category/:id',[TokenObj.verifyAdmin('admin')], crops.editCategory);
 app.delete('/api/category/:id',[TokenObj.verifyAdmin('admin')], crops.deleteCategory);
