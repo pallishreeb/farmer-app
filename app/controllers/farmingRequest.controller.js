@@ -252,3 +252,61 @@ exports.deleteFarmingRequest = async(req,res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 }
+
+//approve a conract reuest by admin
+exports.approveFarmingRequest = async (req, res) => {
+  try {
+    const farmingRequestId = req.params.farmingRequestId;
+
+    // Check if the request with the given ID exists
+    const farmingRequest = await FarmingRequest.findById(farmingRequestId);
+
+    if (!farmingRequest) {
+      return res.status(404).json({ error: 'Farming request not found' });
+    }
+
+    // Update the isApproved field to true
+    farmingRequest.isApproved = true;
+    await farmingRequest.save();
+
+    return res.json({ 
+      message: `Farming request with ID ${farmingRequestId} has been approved`,
+      farmingRequest
+    });
+  } catch (error) {
+    console.error('Error approving farming request:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+//update
+exports.updateFarmingDetails = async (req, res) => {
+  try {
+    const farmingId = req.params.id; // Assuming the farming ID is passed as a route parameter
+
+    // Check if the farming with the given ID exists
+    const farming = await FarmingRequest.findById(farmingId);
+
+    if (!farming) {
+      return res.status(404).json({ error: 'Farming details not found' });
+    }
+
+    // Update farming details
+    farming.location = req.body.location;
+    farming.category = req.body.category;
+    farming.commodity = req.body.commodity;
+    farming.quality = req.body.quality;
+    farming.quantity = req.body.quantity;
+    farming.deliveryTime = req.body.deliveryTime;
+
+    // Save the updated farming details
+    const updatedFarming = await farming.save();
+
+    return res.json({ 
+      message: `Farming details with ID ${farmingId} has been updated`,
+      farming: updatedFarming
+    });
+  } catch (error) {
+    console.error('Error updating farming details:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}

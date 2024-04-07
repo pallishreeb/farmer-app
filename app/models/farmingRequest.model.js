@@ -9,6 +9,7 @@ const farmingRequestSchema = new mongoose.Schema(
     quality: { type: String, require: true },
     quantity: { type: String, require: true },
     deliveryTime: { type: String, require: true },
+    isApproved: { type: Boolean, default:false },
     buyerId: { 
       type:mongoose.Schema.Types.ObjectId,
       ref: 'admin'

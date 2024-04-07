@@ -153,7 +153,7 @@ module.exports = (app) => {
   app.get('/api/selltrade/imageSellTrade/:id', [TokenObj.verifyToken], selltrade.GetbyimageSellTrade);
   app.get('/api/selltrade/image/:id', [TokenObj.verifyToken], selltrade.GetImageForSellTrade);
   app.get('/api/selltrade/Variety',TokenObj.verifyUserType("farmer"), selltrade.getVariety);
-  app.get('/api/selltrade/getselltradebyid/:id', TokenObj.verifyUserType("farmer"), selltrade.GetBySellTrade);
+  app.get('/api/selltrade/getselltradebyid/:id', [TokenObj.verifyToken], selltrade.GetBySellTrade);
   app.put('/api/selltrade/selltrade/update/:id', TokenObj.verifyUserType("farmer"), upload.single('image'), selltrade.updatesellTrade);
   app.delete('/api/selltrade/selltrade/delete/:id', TokenObj.verifyUserType("farmer"), selltrade.DeleteSellTrade);
   // filterQuery
@@ -232,7 +232,9 @@ module.exports = (app) => {
   app.patch("/api/contract/acceptFarmingRequest", [TokenObj.verifyFarmer('farmer') ],FarmingRequest.updateAcceptedFarmers);
   app.patch("/api/contract/updateDelivered",[TokenObj.verifyBuyer('buyer')],FarmingRequest.updateFarmersDelivered);
   app.delete("/api/contract/deleteFarmingRequest",[TokenObj.verifyBuyer('buyer')], FarmingRequest.deleteFarmingRequest);
-
+  app.put("/api/contract/approveFarmingRequest/:farmingRequestId", [TokenObj.verifyAdmin('admin') ],FarmingRequest.approveFarmingRequest);
+  app.put("/api/contract/updateFarmingRequest/:id", [TokenObj.verifyToken ],FarmingRequest.updateFarmingDetails);
+ 
 
   //query messages Api routes
 

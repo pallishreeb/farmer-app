@@ -25,6 +25,8 @@ exports.sellTrade = async(req,res)=>{
         Date:req.body.Date,
         quantity:req.body.quantity,
         image:images,
+        availableFromDate: req.body.availableFromDate,
+        availableToDate: req.body.availableToDate, 
         farmer_id:farmer_id
     }
     // console.log("data",data)
@@ -108,7 +110,9 @@ exports.updatesellTrade = async(req,res)=>{
         price:req.body.price,
         quantity:req.body.quantity,        
         Date:req.body.Date,                                                                                                     
-        image:req.file.path
+        image:req.file.path,
+        availableFromDate: req.body.availableFromDate,
+        availableToDate: req.body.availableToDate, 
     },{
         new:true
     })
