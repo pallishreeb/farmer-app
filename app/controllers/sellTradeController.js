@@ -119,6 +119,23 @@ exports.updatesellTrade = async(req,res)=>{
     if(!sellTrade) return res.status(500).send({Message:"Can't found sellTrade Data with given id"})
     res.send({Message:"Your Data Successfully Updated",data:sellTrade})
 }
+exports.updatesellTradeByAdmin = async(req,res)=>{
+  const sellTrade=await SellModel.findByIdAndUpdate(req.params.id,{
+      pickuplocation:req.body.pickuplocation,
+      category:req.body.category,
+      product:req.body.product,
+      variety:req.body.variety,
+      grade:req.body.grade,
+      price:req.body.price,
+      quantity:req.body.quantity,                                                                                                            
+      availableFromDate: req.body.availableFromDate,
+      availableToDate: req.body.availableToDate, 
+  },{
+      new:true
+  })
+  if(!sellTrade) return res.status(500).send({Message:"Can't found sellTrade Data with given id"})
+  res.send({Message:"Your Data Successfully Updated",data:sellTrade})
+}
 
 exports.DeleteSellTrade = async (req,res)=>{
     const id = req.params.id

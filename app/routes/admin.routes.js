@@ -164,6 +164,7 @@ module.exports = (app) => {
   app.put('/api/selltrade/selltrade/update/:id', TokenObj.verifyUserType("farmer"), upload.single('image'), selltrade.updatesellTrade);
   app.delete('/api/selltrade/selltrade/delete/:id', TokenObj.verifyUserType("farmer"), selltrade.DeleteSellTrade);
   app.delete('/api/selltrade/delete/:id',[TokenObj.verifyAdmin('admin') ], selltrade.DeleteSellTrade);
+  app.put('/api/selltrade/update/:id', [TokenObj.verifyAdmin('admin') ], selltrade.updatesellTradeByAdmin);
   // filterQuery
   app.get('/api/filterQuery/getfilterQuery',  [TokenObj.verifyToken], filterQuery.getFilterQueryData);
   app.get('/api/filterQuery/getfiltercommodity',  [TokenObj.verifyToken], filterQuery.getFilterCommodity);
@@ -249,12 +250,12 @@ module.exports = (app) => {
 
 // Create a new message
 app.post('/api/message',[TokenObj.verifyToken], messageController.postMessage);
-
 // Get all messages between two users
 app.get('/api/messages',[TokenObj.verifyToken], messageController.getMessagesBetweenUsers);
-
 // Delete a message by ID
 app.delete('/api/message',[TokenObj.verifyToken], messageController.deleteMessage);
+app.get('/api/messages-for-admin',[TokenObj.verifyToken], messageController.getMessages);
+app.get('/api/messages-user/:userId',[TokenObj.verifyToken], messageController.getMessageByUserIDAdmin);
 // API endpoint to get all user IDs with whom the current user has exchanged messages
 app.get('/api/message/:userId',[TokenObj.verifyToken],messageController.getMessageByUserID)
 

@@ -16,7 +16,10 @@ const querySchema = new mongoose.Schema({
   product: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'sellTrade', // Reference to the User model for receiver
-    required: true,
+  },
+  contractFarming: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'farmingRequest', // Reference to the User model for receiver
   },
   text: {
     type: String,

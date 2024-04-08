@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const logger 	 = require('morgan');
+const path = require('path');
 // create express app
 const app = express();
 app.use(logger('dev'));
@@ -10,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // parse application/json
 app.use(bodyParser.json())
-
+// app.use(express.static('dist'));
 //dotenv
 require('dotenv').config();
 
@@ -36,6 +37,11 @@ app.get('/api', (req, res) => {
 
 require('./app/routes/admin.routes.js')(app);
 require('./app/routes/user.routes')(app);
+
+// Catch-all route for React app
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+//   });
 
 // Connecting to the database
 mongoose.connect(process.env.url, {
