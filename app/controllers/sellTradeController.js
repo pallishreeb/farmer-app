@@ -39,7 +39,7 @@ exports.sellTrade = async(req,res)=>{
 }
 
 exports.GetSellTrade = async (req,res)=>{
-    let findresult = await SellModel.find({});
+    let findresult = await SellModel.find({}).populate('farmer_id');
     if (!findresult) return res.status(500).send({message:"oops Can't found data."});
     if(findresult=="")return res.status(500).send({Message:"oops Empty Set"})
     res.status(200).send({ status: true, result:findresult });
@@ -125,7 +125,7 @@ exports.DeleteSellTrade = async (req,res)=>{
     let findresult = await SellModel.findByIdAndDelete({_id:id});
     if(!findresult)return res.status(500).send({Message:"Can't found data"})
       // Delete associated orders
-      await Order.deleteMany({ tradeId: productId });
+      await Order.deleteMany({ tradeId: id });
     if(findresult=="")return res.status(500).send({Message:"oops Empty Set"})
     res.status(200).send({msg:"Data Deleted", status: true });
 }

@@ -253,6 +253,26 @@ exports.deleteFarmingRequest = async(req,res) => {
   }
 }
 
+//delete a conract reuest farming by created buyer
+exports.deleteFarmingRequestByAdmin = async(req,res) => {
+  try {
+    const requestId = req.query.farmingRequestId;
+    const userId = req.user.id; // Assuming you have user authentication in place
+
+    // Find the farming request by its ID
+    const farmingRequest = await FarmingRequest.findById({_id:requestId});
+
+    if (!farmingRequest) {
+      return res.status(404).json({ error: 'Farming request not found' });
+    }
+    // Delete the farming request
+    await farmingRequest.remove();
+
+    res.json({ message: 'Farming request deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
 //approve a conract reuest by admin
 exports.approveFarmingRequest = async (req, res) => {
   try {

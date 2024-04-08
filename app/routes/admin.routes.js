@@ -95,7 +95,14 @@ module.exports = (app) => {
   const FarmingRequest = require('../controllers/farmingRequest.controller.js');
   const messageController = require('../controllers/query.controller.js');
   const order = require("../controllers/orders.controller.js")
+  const user = require("../controllers/adminController.js")
   
+
+  //users
+  app.get('/api/buyers',[TokenObj.verifyToken],user.getbuyers);
+  app.get('/api/farmers',[TokenObj.verifyToken],user.getfarmers);
+  app.delete('/api/user/:id',[TokenObj.verifyToken], user.deleteUser);
+
   // farmer
   app.post('/api/admin/register',profileUpload.single('profilePicture'),adminLogin.registerAdmin);
   app.post('/api/admin/login',adminLogin.Adminlogin);
@@ -156,6 +163,7 @@ module.exports = (app) => {
   app.get('/api/selltrade/getselltradebyid/:id', [TokenObj.verifyToken], selltrade.GetBySellTrade);
   app.put('/api/selltrade/selltrade/update/:id', TokenObj.verifyUserType("farmer"), upload.single('image'), selltrade.updatesellTrade);
   app.delete('/api/selltrade/selltrade/delete/:id', TokenObj.verifyUserType("farmer"), selltrade.DeleteSellTrade);
+  app.delete('/api/selltrade/delete/:id',[TokenObj.verifyAdmin('admin') ], selltrade.DeleteSellTrade);
   // filterQuery
   app.get('/api/filterQuery/getfilterQuery',  [TokenObj.verifyToken], filterQuery.getFilterQueryData);
   app.get('/api/filterQuery/getfiltercommodity',  [TokenObj.verifyToken], filterQuery.getFilterCommodity);
@@ -232,6 +240,7 @@ module.exports = (app) => {
   app.patch("/api/contract/acceptFarmingRequest", [TokenObj.verifyFarmer('farmer') ],FarmingRequest.updateAcceptedFarmers);
   app.patch("/api/contract/updateDelivered",[TokenObj.verifyBuyer('buyer')],FarmingRequest.updateFarmersDelivered);
   app.delete("/api/contract/deleteFarmingRequest",[TokenObj.verifyBuyer('buyer')], FarmingRequest.deleteFarmingRequest);
+  app.delete("/api/contract/deleteFarmingRequestByAdmin",[TokenObj.verifyAdmin('admin') ], FarmingRequest.deleteFarmingRequestByAdmin);
   app.put("/api/contract/approveFarmingRequest/:farmingRequestId", [TokenObj.verifyAdmin('admin') ],FarmingRequest.approveFarmingRequest);
   app.put("/api/contract/updateFarmingRequest/:id", [TokenObj.verifyToken ],FarmingRequest.updateFarmingDetails);
  
@@ -273,6 +282,7 @@ app.post('/api/category',[TokenObj.verifyAdmin('admin')], crops.addcategory);
 app.post('/api/categoryByName',[TokenObj.verifyToken],crops.getCropCategorybyname);
 app.get('/api/categoryByParent',[TokenObj.verifyToken],crops.getCategorybyParent);
 app.get('/api/category',[TokenObj.verifyToken],crops.getcategory);
+app.get('/api/category/:id',[TokenObj.verifyAdmin('admin')], crops.getCropCategorybyId);
 app.put('/api/category/:id',[TokenObj.verifyAdmin('admin')], crops.editCategory);
 app.delete('/api/category/:id',[TokenObj.verifyAdmin('admin')], crops.deleteCategory);
 }
