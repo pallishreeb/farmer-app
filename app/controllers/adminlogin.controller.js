@@ -3,7 +3,7 @@ const TokenObj = require("../middleware/token");
 var jwt = require("jsonwebtoken");
 
 // const path = require('path');
-
+const path = require('path');
 exports.sendotp = async (req, res) => {
   const otp = Math.floor(1000 + Math.random() * 9000);
   console.log(otp, "OTP");
@@ -42,21 +42,34 @@ exports.sendotp = async (req, res) => {
 };
 
 exports.Adminlogin = async (req, res) => {
-  if (!req.body.phone || !req.body.otp) {
+  if (!req.body.phone) {
     return res.status(400).send({
-      message: "Phone number or otp can not be empty",
+      message: "Phone number or otp/password can not be empty",
     });
   }
   await Admin.findOne({ phone: req.body.phone }, function (err, Admin) {
     const secret = process.env.SECRET;
     if (err) return res.status(500).send({ message: "Error on the server." });
     if (!Admin) return res.status(404).send({ message: "No farmer found." });
-    if (Admin.otp == req.body.otp) {
-      console.log("testing");
+    if (req.body.otp !==undefined && Admin.otp == req.body.otp) {
+      console.log("otp matched");
       const token = jwt.sign({ id: Admin._id, phone: Admin.phone }, secret, {
-        expiresIn: "1d", // expires in 24 hours
+        expiresIn: "30d", // expires in 24 hours
       });
-      console.log(Admin, "adminadmin");
+      TokenObj.AdminToken = token;
+      res.status(200).send({
+        auth: true,
+        token: token,
+        name: Admin.name,
+        userType: Admin.userType,
+        center: Admin.center,
+        user_id: Admin._id,
+      });
+    } else if (req.body.password!== undefined && Admin.password == req.body.password) {
+      console.log("password matched");
+      const token = jwt.sign({ id: Admin._id, phone: Admin.phone }, secret, {
+        expiresIn: "30d", // expires in 24 hours
+      });
       TokenObj.AdminToken = token;
       res.status(200).send({
         auth: true,
@@ -67,11 +80,10 @@ exports.Adminlogin = async (req, res) => {
         user_id: Admin._id,
       });
     } else {
-      return res.status(500).send({ Message: "Otp is incorrect !" });
+      return res.status(500).send({ Message: "Password/OTP is incorrect !" });
     }
   });
 };
-
 
 exports.registerAdmin = async (req, res) => {
   const phoneExists = await Admin.findOne({ phone: req.body.phone });
@@ -86,6 +98,8 @@ exports.registerAdmin = async (req, res) => {
   } else {
     const data = {
       phone: req.body.phone,
+      password: req.body.password || null,
+      userType: req.body.userType || "farmer"
     };
     // console.log(data, "data")
     Admin.create(data, (err, result) => {
@@ -127,7 +141,7 @@ exports.updateAdmin = async (req, res) => {
   if (!result)
     return res
       .status(500)
-      .send({ Message: "Can't find Farmer Data with given id" });
+      .send({ Message: "Can't find User Data with given id" });
   res
     .status(200)
     .send({ Message: "Your Data Successfully Updated", data: result });
@@ -140,14 +154,11 @@ exports.getAdmin = async (req, res) => {
   if (!result)
     return res
       .status(500)
-      .send({ Message: "Can't find Farmer Data with given id" });
+      .send({ Message: "Can't find User Data with given id" });
   res
     .status(200)
     .send({ Message: "Your Data Successfully Updated", data: result });
 };
-
-
-const path = require('path');
 
 exports.getAdminImage = async (req, res) => {
   const userId = req.params.id;
@@ -179,3 +190,52 @@ exports.getAdminImage = async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 };
+exports.updateAdminPassword = async (req, res) => {
+  const result = await Admin.findByIdAndUpdate(
+    req.params.id,
+    {
+      password: req.body.password
+    },
+    {
+      new: true,
+    }
+  );
+  if (!result)
+    return res
+      .status(500)
+      .send({ Message: "Can't find User Data with given id" });
+  res
+    .status(200)
+    .send({ Message: "Your Data Successfully Updated", data: result });
+};
+
+exports.resetAdminPassword = async (req, res) => {
+
+  if (!req.body.phone) {
+    return res.status(400).send({
+      message: "Phone number can not be empty",
+    });
+  }
+  let findres = await Admin.findOne({ phone: req.body.phone });
+
+  if (findres && findres._id && req.body.newpassword) {
+    const result = await Admin.findByIdAndUpdate(
+      { _id: findres._id },
+      {
+        phone: req.body.phone,
+        password: req.body.newpassword,
+      },
+      { new: true }
+    );
+    res
+      .status(200)
+      .send({ Message: "Update Password Successfully Done", data: result });
+  } else {
+    res
+    .status(400)
+    .send({ Message: "Invalid Inputs" });
+  }
+};
+
+
+

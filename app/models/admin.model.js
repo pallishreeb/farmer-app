@@ -17,6 +17,7 @@ const adminSchema = mongoose.Schema({
     profilePicture: { type: Array },
     userType: { type: String, default: "farmer" },
     otp: { type: String },
+    password: { type: String },
 }, {
     timestamps: true
 });

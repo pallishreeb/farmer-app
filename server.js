@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // parse application/json
 app.use(bodyParser.json())
-// app.use(express.static('dist'));
+app.use(express.static('dist'));
 //dotenv
 require('dotenv').config();
 

@@ -108,6 +108,8 @@ module.exports = (app) => {
   app.post('/api/admin/login',adminLogin.Adminlogin);
   app.put('/api/admin/sendotp',adminLogin.sendotp);
   app.put('/api/admin/update/:id',profileUpload.single('profilePicture'),adminLogin.updateAdmin);
+  app.put('/api/admin/update-password/:id',adminLogin.updateAdmin);
+  app.put('/api/admin/reset-password',adminLogin.resetAdminPassword);
   app.put('/api/farmer/sendotp',farmer.sendotp);
   app.get('/api/admin/:id',adminLogin.getAdmin);
   app.get('/api/admin/profile/:id',adminLogin.getAdminImage);

@@ -11,8 +11,8 @@ const sellTradeSchema=new mongoose.Schema({
     quantity:{type:String,default:0},
     Date:{type:String},
     image: [],
-    availableFromDate: { type: Date }, // Field for the start date of availability
-    availableToDate: { type: Date },   // Field for the end date of availability
+    availableFromDate: { type:String }, // Field for the start date of availability
+    availableToDate: { type:String },   // Field for the end date of availability
     farmer_id:{type:mongoose.Schema.Types.ObjectId,ref:"admin"}
 })
 
