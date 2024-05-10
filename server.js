@@ -39,9 +39,9 @@ require('./app/routes/admin.routes.js')(app);
 require('./app/routes/user.routes')(app);
 
 // Catch-all route for React app
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-//   });
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  });
 
 // Connecting to the database
 mongoose.connect(process.env.url, {

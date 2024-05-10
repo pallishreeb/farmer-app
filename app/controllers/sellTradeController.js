@@ -120,17 +120,33 @@ exports.updatesellTrade = async(req,res)=>{
     res.send({Message:"Your Data Successfully Updated",data:sellTrade})
 }
 exports.updatesellTradeByAdmin = async(req,res)=>{
-  const sellTrade=await SellModel.findByIdAndUpdate(req.params.id,{
-      pickuplocation:req.body.pickuplocation,
-      category:req.body.category,
-      product:req.body.product,
-      variety:req.body.variety,
-      grade:req.body.grade,
-      price:req.body.price,
-      quantity:req.body.quantity,                                                                                                            
-      availableFromDate: req.body.availableFromDate,
-      availableToDate: req.body.availableToDate, 
-  },{
+  let images = [];
+  
+  // Check if there are any image files uploaded
+  if (req.files && req.files.length > 0) {
+    for (var i = 0; i < req.files.length; i++) {
+      images.push(req.files[i].path);
+    }
+  }
+
+  // Prepare the data object with optional fields
+  const data = {
+    pickuplocation:req.body.pickuplocation,
+    category:req.body.category,
+    product:req.body.product,
+    variety:req.body.variety,
+    grade:req.body.grade,
+    price:req.body.price,
+    quantity:req.body.quantity,                                                                                                            
+    availableFromDate: req.body.availableFromDate,
+    availableToDate: req.body.availableToDate, 
+  };
+
+  // Add the image field only if new images are uploaded
+  if (images.length > 0) {
+    data.image = images;
+  }
+  const sellTrade=await SellModel.findByIdAndUpdate(req.params.id,data,{
       new:true
   })
   if(!sellTrade) return res.status(500).send({Message:"Can't found sellTrade Data with given id"})
