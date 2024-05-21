@@ -181,3 +181,27 @@ exports.GetMySellTrade = async (req,res)=>{
     if(findresult=="")return res.status(500).send({Message:"oops Empty Set"})
     res.status(200).send({ status: true, result:findresult });
 }
+
+exports.SearchSellTrade = async (req, res) => {
+  try {
+    // Extract the product query parameter from the request
+    const { product } = req.query;
+    
+    // Build the query object
+    const query = {};
+    if (product) {
+      query.product = { $regex: new RegExp(product, 'i') }; // Case-insensitive search
+    }
+
+    // Find sell trades matching the query and populate the farmer_id field
+    const findresult = await SellModel.find(query).populate('farmer_id');
+    if (!findresult || findresult.length === 0) {
+      return res.status(404).send({ message: "No sell trades found matching the criteria." });
+    }
+
+    res.status(200).send({ status: true, result: findresult });
+  } catch (error) {
+    console.error("Error fetching sell trades:", error);
+    res.status(500).send({ message: "An error occurred while fetching sell trades." });
+  }
+};

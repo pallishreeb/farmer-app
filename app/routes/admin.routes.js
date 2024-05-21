@@ -167,6 +167,9 @@ module.exports = (app) => {
   app.delete('/api/selltrade/selltrade/delete/:id', TokenObj.verifyUserType("farmer"), selltrade.DeleteSellTrade);
   app.delete('/api/selltrade/delete/:id',[TokenObj.verifyAdmin('admin') ], selltrade.DeleteSellTrade);
   app.put('/api/selltrade/update/:id', [TokenObj.verifyToken ], selltrade.updatesellTradeByAdmin);
+  // Add the new route for searching sell trades
+  app.get('/api/selltrade/search',[TokenObj.verifyToken ], selltrade.SearchSellTrade);
+
   // filterQuery
   app.get('/api/filterQuery/getfilterQuery',  [TokenObj.verifyToken], filterQuery.getFilterQueryData);
   app.get('/api/filterQuery/getfiltercommodity',  [TokenObj.verifyToken], filterQuery.getFilterCommodity);
