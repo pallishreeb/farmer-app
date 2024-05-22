@@ -4,16 +4,23 @@ const logger 	 = require('morgan');
 const path = require('path');
 // create express app
 const app = express();
+
+//dotenv
+require('dotenv').config();
+
+//logger
 app.use(logger('dev'));
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
 
-
 // parse application/json
 app.use(bodyParser.json())
+
+//serve frontend build
 app.use(express.static('dist'));
-//dotenv
-require('dotenv').config();
+// Serve static files from the 'app/upload' directory
+app.use('/app/upload', express.static(path.join(__dirname, 'app/upload')));
 
 app.use(function(req, res, next) {
   //let origin = ["*","http://localhost:3000"];
