@@ -15,7 +15,8 @@ const sellTradeSchema=new mongoose.Schema({
     availableFromDate: { type:String }, // Field for the start date of availability
     availableToDate: { type:String },   // Field for the end date of availability
     farmer_id:{type:mongoose.Schema.Types.ObjectId,ref:"admin"}
-})
+    
+}, { timestamps: true })
 
 const sellTrade=mongoose.model("sellTrade",sellTradeSchema);
 
