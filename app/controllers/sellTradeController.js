@@ -40,7 +40,7 @@ exports.sellTrade = async(req,res)=>{
 }
 
 exports.GetSellTrade = async (req,res)=>{
-    let findresult = await SellModel.find({}).populate('farmer_id');
+    let findresult = await SellModel.find({}).populate('farmer_id').sort({ createdAt: -1 });
     if (!findresult) return res.status(500).send({message:"oops Can't found data."});
     if(findresult=="")return res.status(500).send({Message:"oops Empty Set"})
     res.status(200).send({ status: true, result:findresult });
@@ -116,10 +116,20 @@ exports.updatesellTrade = async (req, res) => {
       if (req.body.price) sellTrade.price = req.body.price;
       if (req.body.quantity) sellTrade.quantity = req.body.quantity;
       if (req.body.Date) sellTrade.Date = req.body.Date;
-      if (req.file) sellTrade.image = req.file.path;
+      
       if (req.body.availableFromDate) sellTrade.availableFromDate = req.body.availableFromDate;
       if (req.body.availableToDate) sellTrade.availableToDate = req.body.availableToDate;
       if(req.body.priceQuantityUnit)  sellTrade.priceQuantityUnit = req.body.priceQuantityUnit
+
+      let images = [];
+      if (req.files && req.files.length > 0) {
+        for (var i = 0; i < req.files.length; i++) {
+          console.log(req.files[i]);
+          images.push(req.files[i].path)
+        }
+      }
+
+      if (images.length > 0) sellTrade.image = images;
       // Save the updated sell trade document
       const updatedSellTrade = await sellTrade.save();
       res.send({ message: "Sell trade updated successfully", data: updatedSellTrade });
@@ -173,7 +183,7 @@ exports.getVariety = async (req, res) => {
    
 exports.GetMySellTrade = async (req,res)=>{
     const farmer_id = req.user.id;
-    let findresult = await SellModel.find({farmer_id: mongoose.Types.ObjectId(farmer_id)});
+    let findresult = await SellModel.find({farmer_id: mongoose.Types.ObjectId(farmer_id)}).sort({ createdAt: -1 });
     if (!findresult) return res.status(500).send({message:"oops Can't found data."});
     if(findresult=="")return res.status(500).send({Message:"oops Empty Set"})
     res.status(200).send({ status: true, result:findresult });
