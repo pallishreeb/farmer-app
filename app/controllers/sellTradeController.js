@@ -27,6 +27,7 @@ exports.sellTrade = async(req,res)=>{
         image:images,
         availableFromDate: req.body.availableFromDate,
         availableToDate: req.body.availableToDate, 
+        priceQuantityUnit:req.body.priceQuantityUnit,
         farmer_id:farmer_id
     }
     // console.log("data",data)
@@ -98,36 +99,36 @@ exports.GetImageForSellTrade = async (req, res) => {
   }
 };
 
-exports.updatesellTrade = async(req,res)=>{
-    console.log(req.files,'filreeee')
-    const sellTrade=await SellModel.findByIdAndUpdate(req.params.id,{
-        username:req.body.username,
-        pickuplocation:req.body.pickuplocation,
-        category:req.body.category,
-        product:req.body.product,
-        variety:req.body.variety,
-        grade:req.body.grade,
-        price:req.body.price,
-        quantity:req.body.quantity,        
-        Date:req.body.Date,                                                                                                     
-        image:req.file.path,
-        availableFromDate: req.body.availableFromDate,
-        availableToDate: req.body.availableToDate, 
-    },{
-        new:true
-    })
-    if(!sellTrade) return res.status(500).send({Message:"Can't found sellTrade Data with given id"})
-    res.send({Message:"Your Data Successfully Updated",data:sellTrade})
-}
-exports.updatesellTradeByAdmin = async(req,res)=>{
-  let images = [];
-  
-  // Check if there are any image files uploaded
-  if (req.files && req.files.length > 0) {
-    for (var i = 0; i < req.files.length; i++) {
-      images.push(req.files[i].path);
-    }
+exports.updatesellTrade = async (req, res) => {
+  try {
+      const sellTrade = await SellModel.findById(req.params.id);
+      if (!sellTrade) {
+          return res.status(404).send({ message: "Sell trade not found" });
+      }
+
+      // Update fields only if they are present in the request body
+      if (req.body.username) sellTrade.username = req.body.username;
+      if (req.body.pickuplocation) sellTrade.pickuplocation = req.body.pickuplocation;
+      if (req.body.category) sellTrade.category = req.body.category;
+      if (req.body.product) sellTrade.product = req.body.product;
+      if (req.body.variety) sellTrade.variety = req.body.variety;
+      if (req.body.grade) sellTrade.grade = req.body.grade;
+      if (req.body.price) sellTrade.price = req.body.price;
+      if (req.body.quantity) sellTrade.quantity = req.body.quantity;
+      if (req.body.Date) sellTrade.Date = req.body.Date;
+      if (req.file) sellTrade.image = req.file.path;
+      if (req.body.availableFromDate) sellTrade.availableFromDate = req.body.availableFromDate;
+      if (req.body.availableToDate) sellTrade.availableToDate = req.body.availableToDate;
+      if(req.body.priceQuantityUnit)  sellTrade.priceQuantityUnit = req.body.priceQuantityUnit
+      // Save the updated sell trade document
+      const updatedSellTrade = await sellTrade.save();
+      res.send({ message: "Sell trade updated successfully", data: updatedSellTrade });
+  } catch (error) {
+      console.error("Error updating sell trade:", error);
+      res.status(500).send({ message: "Internal server error" });
   }
+};
+exports.updatesellTradeByAdmin = async(req,res)=>{
 
   // Prepare the data object with optional fields
   const data = {
@@ -141,11 +142,7 @@ exports.updatesellTradeByAdmin = async(req,res)=>{
     availableFromDate: req.body.availableFromDate,
     availableToDate: req.body.availableToDate, 
   };
-
-  // Add the image field only if new images are uploaded
-  if (images.length > 0) {
-    data.image = images;
-  }
+  if(req.body.priceQuantityUnit)  data.priceQuantityUnit = req.body.priceQuantityUnit
   const sellTrade=await SellModel.findByIdAndUpdate(req.params.id,data,{
       new:true
   })

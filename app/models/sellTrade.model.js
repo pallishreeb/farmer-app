@@ -9,6 +9,7 @@ const sellTradeSchema=new mongoose.Schema({
     username:{type:String},
     price:{type:Number,default:0},
     quantity:{type:String,default:0},
+    priceQuantityUnit:{type:String},
     Date:{type:String},
     image: [],
     availableFromDate: { type:String }, // Field for the start date of availability

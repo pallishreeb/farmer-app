@@ -163,7 +163,7 @@ module.exports = (app) => {
   app.get('/api/selltrade/image/:id', [TokenObj.verifyToken], selltrade.GetImageForSellTrade);
   app.get('/api/selltrade/Variety',TokenObj.verifyUserType("farmer"), selltrade.getVariety);
   app.get('/api/selltrade/getselltradebyid/:id', [TokenObj.verifyToken], selltrade.GetBySellTrade);
-  app.put('/api/selltrade/selltrade/update/:id', TokenObj.verifyUserType("farmer"), upload.single('image'), selltrade.updatesellTrade);
+  app.put('/api/selltrade/selltrade/update/:id', [TokenObj.verifyToken ], upload.single('image'), selltrade.updatesellTrade);
   app.delete('/api/selltrade/selltrade/delete/:id', TokenObj.verifyUserType("farmer"), selltrade.DeleteSellTrade);
   app.delete('/api/selltrade/delete/:id',[TokenObj.verifyAdmin('admin') ], selltrade.DeleteSellTrade);
   app.put('/api/selltrade/update/:id', [TokenObj.verifyToken ], selltrade.updatesellTradeByAdmin);
