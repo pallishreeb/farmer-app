@@ -250,7 +250,7 @@ module.exports = (app) => {
   app.put("/api/contract/approveFarmingRequest/:farmingRequestId", [TokenObj.verifyAdmin('admin') ],FarmingRequest.approveFarmingRequest);
   app.put("/api/contract/updateFarmingRequest/:id", [TokenObj.verifyToken ],FarmingRequest.updateFarmingDetails);
   app.put("/api/contract/updateFarmingDetails/:id",upload.array('image', 3),[TokenObj.verifyToken ],FarmingRequest.updateFarmingDetailsByBuyer);
-
+  app.get("/api/contract/allApprovedFarmingRequests",[TokenObj.verifyToken], FarmingRequest.getAllApprovedFarmingRequest);
   //query messages Api routes
 
 // Create a new message

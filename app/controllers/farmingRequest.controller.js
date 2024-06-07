@@ -15,7 +15,7 @@ exports.farmingRequest = async (req, res) => {
       }
     }
      // Parse farmersToRequest if it is received as a string
-     let farmersToRequest = req.body.farmersToRequest;
+     let farmersToRequest = req.body?.farmersToRequest;
      if (typeof farmersToRequest === 'string') {
        farmersToRequest = JSON.parse(farmersToRequest);
      }
@@ -333,7 +333,8 @@ exports.updateFarmingDetails = async (req, res) => {
     farming.quality = req.body.quality;
     farming.quantity = req.body.quantity;
     farming.deliveryTime = req.body.deliveryTime;
-
+    farming.price = req.body.price;
+    farming.priceQuantityUnit = req.body.priceQuantityUnit;
     // Save the updated farming details
     const updatedFarming = await farming.save();
 
@@ -366,7 +367,7 @@ exports.updateFarmingDetailsByBuyer = async (req, res) => {
     if(req.body.quantity) farming.quantity = req.body.quantity;
     if(req.body.deliveryTime) farming.deliveryTime = req.body.deliveryTime;
     if(req.body.priceQuantityUnit)  farming.priceQuantityUnit = req.body.priceQuantityUnit
-
+    if(req.body.price)  farming.price = req.body.price
     let images = [];
     if (req.files && req.files.length > 0) {
       for (var i = 0; i < req.files.length; i++) {
@@ -387,4 +388,21 @@ exports.updateFarmingDetailsByBuyer = async (req, res) => {
     console.error('Error updating farming details:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
+}
+
+//aaproved farming request
+exports.getAllApprovedFarmingRequest = async (req,res) =>{
+  try {
+    // Find all contractFarmings  request
+    const contractFarmingRequests = await FarmingRequest.find({isApproved:true}).populate('buyerId','_id fullName city address phone').sort({ createdAt: -1 });
+    if(contractFarmingRequests .length == 0){
+      return res.send({Message: 'No Contract farming found'})
+    }
+    return res.json({
+      success:true,
+      contractFarmingRequests 
+    })
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  };
 }
