@@ -14,11 +14,16 @@ exports.farmingRequest = async (req, res) => {
         images.push(req.files[i].path)
       }
     }
+     // Parse farmersToRequest if it is received as a string
+     let farmersToRequest = req.body.farmersToRequest;
+     if (typeof farmersToRequest === 'string') {
+       farmersToRequest = JSON.parse(farmersToRequest);
+     }
     const {
       location,
       quality,
       quantity,
-      farmersToRequest,
+      price,
       category,
       commodity,
       deliveryTime,
@@ -52,6 +57,7 @@ exports.farmingRequest = async (req, res) => {
       buyerId,
       image:images,
       priceQuantityUnit,
+      price
     };
     let contractFarming = new FarmingRequest(data);
     contractFarming
