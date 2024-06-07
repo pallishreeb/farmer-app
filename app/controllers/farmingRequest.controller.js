@@ -7,6 +7,13 @@ const mongoose = require("mongoose")
 //Send ccontract farming request to farmers
 exports.farmingRequest = async (req, res) => {
   try {
+    let images = [];
+    if (req.files && req.files.length > 0) {
+      for (var i = 0; i < req.files.length; i++) {
+        console.log(req.files[i]);
+        images.push(req.files[i].path)
+      }
+    }
     const {
       location,
       quality,
@@ -15,6 +22,7 @@ exports.farmingRequest = async (req, res) => {
       category,
       commodity,
       deliveryTime,
+      priceQuantityUnit
     } = req.body;
 
     let buyerId = req.user.id;
@@ -42,6 +50,8 @@ exports.farmingRequest = async (req, res) => {
       commodity,
       deliveryTime,
       buyerId,
+      image:images,
+      priceQuantityUnit,
     };
     let contractFarming = new FarmingRequest(data);
     contractFarming
@@ -318,6 +328,48 @@ exports.updateFarmingDetails = async (req, res) => {
     farming.quantity = req.body.quantity;
     farming.deliveryTime = req.body.deliveryTime;
 
+    // Save the updated farming details
+    const updatedFarming = await farming.save();
+
+    return res.json({ 
+      message: `Farming details with ID ${farmingId} has been updated`,
+      farming: updatedFarming
+    });
+  } catch (error) {
+    console.error('Error updating farming details:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+//update by buyer
+exports.updateFarmingDetailsByBuyer = async (req, res) => {
+  try {
+    const farmingId = req.params.id; // Assuming the farming ID is passed as a route parameter
+
+    // Check if the farming with the given ID exists
+    const farming = await FarmingRequest.findById(farmingId);
+
+    if (!farming) {
+      return res.status(404).json({ error: 'Farming details not found' });
+    }
+// console.log(req.body)
+    // Update farming details
+    if(req.body.location) farming.location = req.body.location;
+    if(req.body.category) farming.category = req.body.category;
+    if(req.body.commodity) farming.commodity = req.body.commodity;
+    if(req.body.quality)  farming.quality = req.body.quality;
+    if(req.body.quantity) farming.quantity = req.body.quantity;
+    if(req.body.deliveryTime) farming.deliveryTime = req.body.deliveryTime;
+    if(req.body.priceQuantityUnit)  farming.priceQuantityUnit = req.body.priceQuantityUnit
+
+    let images = [];
+    if (req.files && req.files.length > 0) {
+      for (var i = 0; i < req.files.length; i++) {
+        console.log(req.files[i]);
+        images.push(req.files[i].path)
+      }
+    }
+
+    if (images.length > 0) farming.image = images;
     // Save the updated farming details
     const updatedFarming = await farming.save();
 

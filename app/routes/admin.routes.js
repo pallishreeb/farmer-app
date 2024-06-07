@@ -238,7 +238,7 @@ module.exports = (app) => {
   // app.get('/api/farmingtype/getorganicfarming',TokenObj.verifyUserType("farmer"),farmingType.getorganicfarming)
 
   //contract farming
-  app.post("/api/contract/contractFarmRequest", [TokenObj.verifyBuyer("buyer")],FarmingRequest.farmingRequest);
+  app.post("/api/contract/contractFarmRequest",upload.array('image', 3), [TokenObj.verifyBuyer("buyer")],FarmingRequest.farmingRequest);
   app.get("/api/contract/contractFarmers",[TokenObj.verifyBuyer('buyer') ],FarmingRequest.contractFarmerList);
   app.get("/api/contract/allFarmingRequests",[TokenObj.verifyToken], FarmingRequest.getAllFarmingRequest);
   app.get("/api/contract/myFarmingRequests",[TokenObj.verifyBuyer('buyer') ], FarmingRequest.getMyFarmingRequest);
@@ -249,7 +249,7 @@ module.exports = (app) => {
   app.delete("/api/contract/deleteFarmingRequestByAdmin",[TokenObj.verifyAdmin('admin') ], FarmingRequest.deleteFarmingRequestByAdmin);
   app.put("/api/contract/approveFarmingRequest/:farmingRequestId", [TokenObj.verifyAdmin('admin') ],FarmingRequest.approveFarmingRequest);
   app.put("/api/contract/updateFarmingRequest/:id", [TokenObj.verifyToken ],FarmingRequest.updateFarmingDetails);
- 
+  app.put("/api/contract/updateFarmingDetails/:id",upload.array('image', 3),[TokenObj.verifyToken ],FarmingRequest.updateFarmingDetailsByBuyer);
 
   //query messages Api routes
 

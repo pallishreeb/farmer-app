@@ -31,7 +31,9 @@ const farmingRequestSchema = new mongoose.Schema(
         type:mongoose.Schema.Types.ObjectId,
         ref: 'admin'
       }
-    ]
+    ],
+    image: [],
+    priceQuantityUnit: { type: String },
   },
   {
     timestamps: true,
