@@ -24,6 +24,7 @@ exports.farmingRequest = async (req, res) => {
       quality,
       quantity,
       price,
+      basePrice,
       category,
       commodity,
       deliveryTime,
@@ -57,7 +58,8 @@ exports.farmingRequest = async (req, res) => {
       buyerId,
       image:images,
       priceQuantityUnit,
-      price
+      price,
+      basePrice
     };
     let contractFarming = new FarmingRequest(data);
     contractFarming
@@ -335,6 +337,7 @@ exports.updateFarmingDetails = async (req, res) => {
     farming.deliveryTime = req.body.deliveryTime;
     farming.price = req.body.price;
     farming.priceQuantityUnit = req.body.priceQuantityUnit;
+    farming.basePrice = req.body.basePrice
     // Save the updated farming details
     const updatedFarming = await farming.save();
 
@@ -368,6 +371,7 @@ exports.updateFarmingDetailsByBuyer = async (req, res) => {
     if(req.body.deliveryTime) farming.deliveryTime = req.body.deliveryTime;
     if(req.body.priceQuantityUnit)  farming.priceQuantityUnit = req.body.priceQuantityUnit
     if(req.body.price)  farming.price = req.body.price
+    if(req.body.basePrice)  farming.basePrice = req.body.basePrice
     let images = [];
     if (req.files && req.files.length > 0) {
       for (var i = 0; i < req.files.length; i++) {

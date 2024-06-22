@@ -8,6 +8,7 @@ const sellTradeSchema = new mongoose.Schema({
     grade: { type: String },
     username: { type: String },
     price: { type: Number, default: 0 },
+    basePrice: { type: Number, default: 0 },
     quantity: { type: String, default: 0 },
     priceQuantityUnit: { type: String },
     Date: { type: String },

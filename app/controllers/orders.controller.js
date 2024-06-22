@@ -11,7 +11,8 @@ exports.createOrder = async (req, res) => {
       quantity,
       deliveryTime,
       tradeId,
-      farmer_id
+      farmer_id,
+      basePrice
     } = req.body;
 
     // Validate required fields
@@ -29,6 +30,7 @@ exports.createOrder = async (req, res) => {
       deliveryTime,
       tradeId, 
       farmer_id,
+      basePrice,
       buyerId: req.user.id, // Set buyerId from authenticated user
     });
 

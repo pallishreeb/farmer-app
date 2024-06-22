@@ -28,7 +28,8 @@ exports.sellTrade = async(req,res)=>{
         availableFromDate: req.body.availableFromDate,
         availableToDate: req.body.availableToDate, 
         priceQuantityUnit:req.body.priceQuantityUnit,
-        farmer_id:farmer_id
+        farmer_id:farmer_id,
+        basePrice:req.body?.basePrice
     }
     // console.log("data",data)
     await SellModel.create(data,(err,result)=>{
@@ -120,7 +121,8 @@ exports.updatesellTrade = async (req, res) => {
       if (req.body.availableFromDate) sellTrade.availableFromDate = req.body.availableFromDate;
       if (req.body.availableToDate) sellTrade.availableToDate = req.body.availableToDate;
       if(req.body.priceQuantityUnit)  sellTrade.priceQuantityUnit = req.body.priceQuantityUnit
-
+      if(req.body.basePrice)  sellTrade.basePrice = req.body.basePrice
+   
       let images = [];
       if (req.files && req.files.length > 0) {
         for (var i = 0; i < req.files.length; i++) {
@@ -151,6 +153,7 @@ exports.updatesellTradeByAdmin = async(req,res)=>{
     quantity:req.body.quantity,                                                                                                            
     availableFromDate: req.body.availableFromDate,
     availableToDate: req.body.availableToDate, 
+    basePrice:req.body?.basePrice
   };
   if(req.body.priceQuantityUnit)  data.priceQuantityUnit = req.body.priceQuantityUnit
   const sellTrade=await SellModel.findByIdAndUpdate(req.params.id,data,{
