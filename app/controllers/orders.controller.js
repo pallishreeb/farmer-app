@@ -48,7 +48,7 @@ exports.getOrdersForBuyer = async (req, res) => {
     const buyerId = req.params.buyerId;
 
     // Find orders for the specific buyer
-    const orders = await Order.find({ buyerId }).populate('farmer_id');
+    const orders = await Order.find({ buyerId }).populate('farmer_id').populate('tradeId');
 
     res.status(200).json(orders);
   } catch (error) {
@@ -63,7 +63,7 @@ exports.getOrdersForfarmer  = async (req, res) => {
     const farmerId = req.params.farmerId;
 
     // Find orders for the specific farmer
-    const orders = await Order.find({ farmer_id: farmerId }).populate('buyerId');
+    const orders = await Order.find({ farmer_id: farmerId }).populate('buyerId').populate('tradeId');
 
     res.status(200).json(orders);
   } catch (error) {
@@ -76,7 +76,7 @@ exports.getOrdersForfarmer  = async (req, res) => {
 exports.getOrdersForAdmin  = async (req, res) => {
   try {
     // Find orders for the specific farmer
-    const orders = await Order.find({}).populate('buyerId').populate('farmer_id');
+    const orders = await Order.find({}).populate('buyerId').populate('farmer_id').populate('tradeId');
 
     res.status(200).json(orders);
   } catch (error) {
@@ -91,7 +91,7 @@ exports.getOrderDetails = async (req, res) => {
     const orderId = req.params.orderId;
 
     // Find the order by ID
-    const order = await Order.findById(orderId).populate('farmer_id').populate('buyerId');
+    const order = await Order.findById(orderId).populate('farmer_id').populate('buyerId').populate('tradeId');
 
     if (!order) {
       return res.status(404).json({ message: 'Order not found' });
