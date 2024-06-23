@@ -18,7 +18,11 @@ const orderSchema=new mongoose.Schema({
       ref: 'admin'
     },
     farmer_id:{type:mongoose.Schema.Types.ObjectId,ref:"admin"}
-})
+},
+{
+  timestamps: true,
+}
+)
 
 const order =mongoose.model("order",orderSchema);
 
