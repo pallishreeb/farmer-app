@@ -2,33 +2,31 @@ const Crop = require("../models/crop.model.js");
 const CropType = require("../models/croptypes.model.js");
 
 exports.addcategory = async (req, res) => {
-  let findres = await CropType.findOne({ name: req.body.name });
-  if (findres && findres._id) {
-    return res.status(400).send({
-      message: "Crop Category already exit",
+  try {
+    let findres = await CropType.findOne({ name: req.body.name });
+    if (findres && findres._id) {
+      return res.status(400).send({
+        message: "Crop Category already exists",
+      });
+    }
+
+    // Create a category
+    const category = new CropType({
+      parentCategory: req.body.parentCategory,
+      name: req.body.name,
+      price: req.body.price,
+      unit: req.body.unit,
+      variety: req.body.variety || [], // Default to empty array if not provided
+      grade: req.body.grade || ''      // Default to empty string if not provided
+    });
+
+    let data = await category.save();
+    res.send(data);
+  } catch (err) {
+    res.status(500).send({
+      message: err.message || "Some error occurred while creating the Crop Category.",
     });
   }
-
-  // Create a category
-  const category = new CropType({
-    parentCategory:req.body.parentCategory,
-    name: req.body.name,
-    price: req.body.price,
-    unit: req.body.unit,
-  });
-
-  category
-    .save()
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message ||
-          "Some error occurred while creating the Crop Category.",
-      });
-    });
 };
 
 exports.getcategory = async (req, res) => {
@@ -63,8 +61,8 @@ exports.getCategorybyParent= async (req, res) => {
   res.status(200).send({ status: true, result: findresult });
 };
 exports.editCategory = async (req, res) => {
-  const categoryId = req.params.id; 
-  const {parentCategory, name, price, unit } = req.body;
+  const categoryId = req.params.id;
+  const { parentCategory, name, price, unit, variety, grade } = req.body;
 
   try {
     let category = await CropType.findById(categoryId);
@@ -73,10 +71,12 @@ exports.editCategory = async (req, res) => {
       return res.status(404).send({ message: "Category not found." });
     }
 
-    category.parentCategory = parentCategory || category.parentCategory
+    category.parentCategory = parentCategory || category.parentCategory;
     category.name = name || category.name;
     category.price = price || category.price;
     category.unit = unit || category.unit;
+    if (variety !== undefined) category.variety = variety;
+    if (grade !== undefined) category.grade = grade;
 
     const updatedCategory = await category.save();
     res.send(updatedCategory);
