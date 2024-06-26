@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const logger 	 = require('morgan');
 const path = require('path');
+const initializeSequence = require('./sequenceInit.js');
 // create express app
 const app = express();
 
@@ -21,6 +22,9 @@ app.use(bodyParser.json())
 app.use(express.static('dist'));
 // Serve static files from the 'app/upload' directory
 app.use('/app/upload', express.static(path.join(__dirname, 'app/upload')));
+
+// Initialize the sequences
+initializeSequence();
 
 app.use(function(req, res, next) {
   //let origin = ["*","http://localhost:3000"];

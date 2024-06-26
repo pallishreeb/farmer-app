@@ -50,7 +50,7 @@ exports.Adminlogin = async (req, res) => {
   await Admin.findOne({ phone: req.body.phone }, function (err, Admin) {
     const secret = process.env.SECRET;
     if (err) return res.status(500).send({ message: "Error on the server." });
-    if (!Admin) return res.status(404).send({ message: "No farmer found." });
+    if (!Admin) return res.status(404).send({ message: "No User found." });
     if (req.body.otp !==undefined && Admin.otp == req.body.otp) {
       console.log("otp matched");
       const token = jwt.sign({ id: Admin._id, phone: Admin.phone }, secret, {
@@ -132,7 +132,8 @@ exports.updateAdmin = async (req, res) => {
       location: req.body.location,
       phone: req.body.phone,
       profilePicture: req.file,
-      userType: req.body.userType
+      userType: req.body.userType,
+      email : req.body.email || null
     },
     {
       new: true,
@@ -237,5 +238,51 @@ exports.resetAdminPassword = async (req, res) => {
   }
 };
 
+
+exports.AdminPanelLogin = async (req, res) => {
+  if (!req.body.email) {
+    return res.status(400).send({
+      message: "Phone number or otp/password can not be empty",
+    });
+  }
+  await Admin.findOne({ email: req.body.email }, function (err, Admin) {
+    const secret = process.env.SECRET;
+    if (err) return res.status(500).send({ message: "Error on the server." });
+    if (!Admin) return res.status(404).send({ message: "No User found." });
+    if (req.body.otp !==undefined && Admin.otp == req.body.otp) {
+      console.log("otp matched");
+      const token = jwt.sign({ id: Admin._id, phone: Admin.phone }, secret, {
+        expiresIn: "30d", // expires in 24 hours
+      });
+      TokenObj.AdminToken = token;
+      res.status(200).send({
+        auth: true,
+        token: token,
+        name: Admin.name,
+        userType: Admin.userType,
+        center: Admin.center,
+        user_id: Admin._id,
+        email:Admin.email
+      });
+    } else if (req.body.password!== undefined && Admin.password == req.body.password) {
+      console.log("password matched");
+      const token = jwt.sign({ id: Admin._id, phone: Admin.phone }, secret, {
+        expiresIn: "30d", // expires in 24 hours
+      });
+      TokenObj.AdminToken = token;
+      res.status(200).send({
+        auth: true,
+        token: token,
+        name: Admin.name,
+        userType: Admin.userType,
+        center: Admin.center,
+        user_id: Admin._id,
+        email:Admin.email
+      });
+    } else {
+      return res.status(500).send({ Message: "Password/OTP is incorrect !" });
+    }
+  });
+};
 
 
