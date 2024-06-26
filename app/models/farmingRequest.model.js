@@ -11,7 +11,7 @@ const farmingRequestSchema = new mongoose.Schema(
     quantity: { type: String, require: true },
     deliveryTime: { type: String, require: true },
     price: { type: String },
-    basePrice: { type: Number, default: 0 },
+    basePrice: { type: String},
     isApproved: { type: Boolean, default: false },
     buyerId: { 
       type: mongoose.Schema.Types.ObjectId,

@@ -9,7 +9,7 @@ const orderSchema = new mongoose.Schema({
     quality: { type: String, require: true },
     quantity: { type: String, require: true },
     deliveryTime: { type: String, require: true },
-    basePrice: { type: Number, default: 0 },
+    basePrice: { type: String},
     status: { type: String, enum: ["Placed", "Packing", "Shipping", "Delivered", "Cancelled"], default: "Placed" },
     tradeId: { 
         type: mongoose.Schema.Types.ObjectId,
