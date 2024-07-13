@@ -124,7 +124,7 @@ exports.contractFarmerList = async (req, res) => {
 exports.getAllFarmingRequest = async (req,res) =>{
   try {
     // Find all contractFarmings  request
-    const contractFarmingRequests = await FarmingRequest.find({}).populate('buyerId','_id fullName city address phone').sort({ createdAt: -1 });
+    const contractFarmingRequests = await FarmingRequest.find({}).populate('buyerId','_id fullName city address phone userId').sort({ createdAt: -1 });
     if(contractFarmingRequests .length == 0){
       return res.send({Message: 'No Contract farming found'})
     }
